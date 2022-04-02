@@ -26,7 +26,7 @@
 
 ### 3. Exploratory Analysis
 
-Please check out [Jupyter Notebook]() for analysis. 
+Please check out [Jupyter Notebook](./Milestone%201%20Data%20Analysis.ipynb) for analysis. 
 
 ### 4. Related Work
 
