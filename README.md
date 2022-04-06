@@ -21,7 +21,8 @@ For this project, we wish to showcase the magical world of chocolate.
 *Find a dataset (or multiple) that you will explore. Assess the quality of the data it contains and how much preprocessing / data-cleaning it will require before tackling visualization. We recommend using a standard dataset as this course is not about scraping nor data processing.*
 
 We decided to evaluate mainly three publicly available datasets that were found on Kaggle. All of the datasets contain 1000-2000 ratings of chocolate bars alongside some matedata on the latter.
-The first, and most promising, one was created by Manhattan Chocolate Society, Flavors of Cacao [Internet]. Available from: http://flavorsofcacao.com/. The dataset was last updated three months ago and code for crawling the most up-to-date information from the website was published alongside the data (script). As most datasets, the available data is USA/Canada centric, showing only chocolate bars produced by companies in the two countries. The website http://flavorsofcacao.com/ appears very trustworthy and thorough. It contains the data that is available on the dataset plus lots of informative studies and surveys on chocolate that were conducted by the Manhattan Chocolate Society and might be nice to include to our website as well.
+The first, and most promising, one was created by Manhattan Chocolate Society, Flavors of Cacao [Internet]. Available from: http://flavorsofcacao.com/. The dataset was last updated three months ago and code for crawling the most up-to-date information from the website was published alongside the data (script). As most datasets, the available data is USA/Canada centric, showing only chocolate bars produced by companies in the two countries. The website http://flavorsofcacao.com/ appears very trustworthy and thorough. It contains the data that is available on the dataset plus lots of informative studies and surveys on chocolate that were conducted by the Manhattan Chocolate Society and might be nice to include to our website as well. 
+The second and third are less up to date and contain fewer metadata fields. These were all retrieved from the same website, only 5 and 2 years before. For this reason, we decide to focus on the first.
 
 The dataset is very clean: the missing fields are very few, and the only preprocessing required will be a merging of the three datasets and some renaming of categorical values into more readable versions.
 
@@ -36,7 +37,8 @@ We will shed light on the elements that contribute to creating the perfect choco
 
 Please check out [Jupyter Notebook](./Milestone%201%20Data%20Analysis.ipynb) for analysis. 
 
-### 4. Related Work4
+### 4. Related Work
+
 
 
 ## Milestone 2 
