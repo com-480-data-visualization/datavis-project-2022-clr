@@ -32,6 +32,7 @@ The dataset is very clean: the missing fields are very few, and the only preproc
 
 We will shed light on the elements that contribute to creating the perfect chocolate bar, be it the bean, the company, the flavour and so on.
 
+Switzerland is renowned for its chocolate production. The quality, the variety and the taste have given it the reputable position that it currently possesses. However, many of us have been eating chocolate without really knowing where it came from and the process involved in its production. We aim to provide users who are passionate about chocolate the opportunity to find out more about their favorite chocolate bars in a visually interactive way. In our project, we will allow users to find out the origins of any chocolate manufacturer as well as the type of beans and their country of origin for a given chocolate bar. Finally, we will allow users to input their own recipes for a chocolate of their imagination and provide them with feedback based on aggregates from ratings given by others according to the company origin, flavors, bean origin, how dark the bean is and how it's liked by people across the globe. 
 
 ### 3. Exploratory Analysis
 
