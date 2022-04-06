@@ -39,7 +39,9 @@ Please check out [Jupyter Notebook](./Milestone%201%20Data%20Analysis.ipynb) for
 
 ### 4. Related Work
 
+Most [related work on Kaggle](https://www.kaggle.com/search?q=chocolate+bar+ratings+in%3Anotebooks+tags%3A%22data+visualization%22) is mostly limited to exploratory data analysis, with some notable projects trying to predict a chocolate bar's rating based on e.g. its cocoa percentage or ingredients. We are not aware of any other project using this dataset for informative purposes, especially not ones with an interactive visualization.
 
+We were particularly inspired by the beatufiful look and informative nature of the [Wine Journey](https://com-480-data-visualization.github.io/com-480-project-onvagagner/website/) project from this same course. We also want to put a unique twist on the visual theme, perhaps using Charlie and the Chocolate factory as an inspiration.
 
 ## Milestone 2 
 
