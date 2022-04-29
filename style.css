@@ -1,0 +1,45 @@
+html, body {
+	box-sizing: border-box;
+	width: 100%;
+	margin: 0;
+}
+
+body {
+	display: flex;
+	height: 100vh;
+}
+svg {
+	flex: 4;
+}
+#cards {
+	flex: 2;
+	overflow: scroll;
+}
+.card {
+	background: #eee;
+}
+
+.arc {
+  opacity: .6;
+  stroke: darkred;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.country {
+	stroke-width: 1px;
+	stroke: #888;
+	fill: #eee;
+	opacity: 0.8;
+}
+
+.globe-background {
+	fill: none;
+}
+
+.graticule {
+  fill: none;
+  stroke: black;
+  stroke-width: 1px;
+  opacity: 0.8;
+}
