@@ -32,11 +32,11 @@ function createCountries(elem, path, worldData) {
 
 function drawCard(elem, card) {
 	elem.selectAll("*").remove();
-    elem.append('p').text(d => "Company: " + d.company);
-    elem.append('p').text(d => "Bean country: " + d.country_bean);
-    elem.append('p').text(d => "Cocoa percentage: " + d.cocoa);
-    elem.append('p').text(d => "Specific Bean name: " + d.specific_bean);
-    elem.append('p').text(d => "Reviewed in: " + d.review);
+    elem.append('p').text(d => "Company: " + d.company_names);
+    elem.append('p').text(d => "Bean origin: " + d.country_bean_origin);
+    elem.append('p').text(d => "Cocoa percentage: " + d.cocoa_percent);
+    elem.append('p').text(d => "Specific Bean name: " + d.specific_bean_origin);
+    elem.append('p').text(d => "Reviewed in: " + d.review_date);
     elem.append('p').text(d => "Rating: " + d.rating);
 }
 
@@ -139,7 +139,7 @@ class GlobeDrawer {
 			.attr("cx", d => this.projection([d.longitude, d.latitude])[0])
 			.attr('cy', d => this.projection([d.longitude, d.latitude])[1])
 			.attr("fill", fill)
-			.attr("r", d => 3 + (d.company_location_count || d.bean_location_count) / 20)
+			.attr("r", d => 3 + d.location_count / 20)
 			.on("click", (event, d) => {
 				event.stopPropagation();
 
@@ -162,10 +162,11 @@ class GlobeDrawer {
 			.join("text")
 			.attr("x", d => this.projection([d.longitude, d.latitude])[0] + offset)
 			.attr('y', d => this.projection([d.longitude, d.latitude])[1] - offset)
-			.text(d => d.company_location_name || d.bean_location_name);
+			.text(d => d.location_name);
 	}
 
 	drawCards(cards) {
+		console.log(cards);
 		this.labelElem.selectAll("div")
 			.data(cards)
 			.join("div")
@@ -176,11 +177,7 @@ class GlobeDrawer {
 	drawArcs(selectedLocation = null) {
 		var dataset = this.linkData;
 		if (selectedLocation != null) {
-			if (selectedLocation.company_location_name) {
-				dataset = dataset.filter(d => d.company_location_name == selectedLocation.company_location_name);
-			} else {
-				dataset = dataset.filter(d => d.bean_location_name == selectedLocation.bean_location_name);
-			}
+			dataset = dataset.filter(d => (d.company_location_name || d.bean_location_name) == selectedLocation.location_name);
 		}
 		this.arcsGroup.selectAll("path")
 			.data(dataset)
