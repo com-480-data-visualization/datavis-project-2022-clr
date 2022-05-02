@@ -49,11 +49,21 @@ We were particularly inspired by the beatufiful look and informative nature of t
 
 ## Milestone 2 
 
-**10% of the final grade**
+### Sketches (__Ludovica__)
 
+### Tools / Lectures (__Carlo__)
 
+### Goal breakdown
 
+#### Core visualization
 
+* Viz 1 (__Carlo__)
+* Viz 2 (__Rouby__)
+
+#### Extra ideas (__Ludovica__)
+
+### Demo
+You can preview our project [on GitHub pages.](https://com-480-data-visualization.github.io/datavis-project-2022-clr/)
 
 
 ## Milestone 3 
