@@ -49,15 +49,34 @@ We were particularly inspired by the beatufiful look and informative nature of t
 
 ## Milestone 2 
 
-### Sketches (__Ludovica__)
+### Sketches
 
-### Tools / Lectures (__Carlo__)
+The following are hand-drawn sketches showing the general outline of our website, one for each "main" visualization.
+
+![](sketches/sketch-globe.jpg)
+
+![](sketches/sketch-flavor.jpg)
+
+### Tools / Lectures
+
+We will mostly stick to using D3 for our project. We will be using most basic D3 features as described in the "D3" and "Interactive D3" lectures
+such as creating html and svg elements for each item in our dataset and displaying time-series data.
+We will also show geographical data on a globe using information shown in the "Maps" and "Practical Maps" features.
+
+As for the website's styling, we could either create it from scratch, or use a framework such as bootstrap, based on the amount of time we have available to finish the project.
 
 ### Goal breakdown
 
+We have identified two independent main pieces that should make up our final visualization, and came up with some further ideas that could be nice to implement if time allows.
+
 #### Core visualization
 
-* Viz 1 (__Carlo__)
+* __A World of Chocolate__: Since with our website we want to describe the process of the making of chocolate, one of the central parts will be outlining the relationships between cocoa producers and chocolate manufacturers. Both of these will be shown as points on a globe (with either a cocoa bean or chocolate bar icon, respectively), with arcs between them representing an import-export relationship. The size of the points and the width of the arcs will be proportional to the amount of chocolate bars in our dataset that are either produced in or with cocoa obtained from their location. This will give a good general overview of the global production of chocolate and import-export of cocoa.
+
+Clicking on a location will bring up a list of cards to the right of the globe, one for each chocolate bar that has a relationship (production or harvesting) with that location, showing more information such as company name, main characteristics and ingredients, cocoa percentage, and their average score based on reviews.
+
+More general information about how a bar's characteristics influence its rating will be shown on a separate element below. (@Ludovica I think this is an extra, if so feel free to move this paragraph to that section or smth).
+
 * Viz 2 (__Rouby__)
 
 #### Extra ideas (__Ludovica__)
