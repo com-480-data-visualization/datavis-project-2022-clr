@@ -2,6 +2,34 @@ const COCO_PERCENT_FACTOR = 0.2
 const INGREDIENTS_FACTOR = 0.4
 const FLAVORS_FACTOR = 0.4 
 
+
+function cosinesim(A,B){
+    var dotproduct=0;
+    var mA=0;
+    var mB=0;
+    for(i = 0; i < A.length; i++){ 
+        dotproduct += (A[i] * B[i]);
+        mA += (A[i]*A[i]);
+        mB += (B[i]*B[i]);
+    }
+    mA = Math.sqrt(mA);
+    mB = Math.sqrt(mB);
+    var similarity = (dotproduct)/((mA)*(mB)) 
+    return similarity;
+}
+
+function calculate_mean(vectors){
+    var mean = []
+    for(let i = 0; i < vectors[0].length; i++){
+        var local_sum = 0;
+        for(let j = 0; j < vectors.length; j++){
+            local_sum += vectors[j][i];
+        }
+        mean.push(local_sum/vectors.length)
+    }
+    
+    return mean
+}
 $("#main-form").on('submit', function (e) {
     //stop form submission
     e.preventDefault();
@@ -79,12 +107,17 @@ $("#main-form").on('submit', function (e) {
             var score = (coco_percent_similarity/100 * COCO_PERCENT_FACTOR) + ((ingredients_common / new_ingredients_indices.length) * INGREDIENTS_FACTOR) + ((flavors_common / new_flavors_idx.length) * FLAVORS_FACTOR)
             distances.push({idx: key, sc: score });
         }else{
-            console.log("using vectors")
-            var flavors_score = 0;
+            // console.log("using vectors")
+            var flavor_vectors = []
             for(let i = 0; i < new_flavors_idx.length; i++){
-                flavors_score += bar['Flavours Vectors'][new_flavors_idx[i]]
+                flavor_vectors.push(embeddings[flavours[new_flavors_idx[i]]]['vector'])
             }
-            var score = (coco_percent_similarity/100 * COCO_PERCENT_FACTOR) + ((ingredients_common / new_ingredients_indices.length) * INGREDIENTS_FACTOR) + ((flavors_score / new_flavors_idx.length) * FLAVORS_FACTOR)
+            // console.log("pushed vectors: ", flavor_vectors)
+            var flavors_average = calculate_mean(flavor_vectors)
+            // console.log("average: ", flavors_average)
+            var flavors_score = cosinesim(flavors_average, bar['Flavours Vectors']);
+            // console.log("score: ", flavors_score)
+            var score = (coco_percent_similarity/100 * COCO_PERCENT_FACTOR) + ((ingredients_common / new_ingredients_indices.length) * INGREDIENTS_FACTOR) + ((flavors_score / 1) * FLAVORS_FACTOR)
             distances.push({idx: key, sc: score });
         }
         
@@ -123,7 +156,8 @@ $("#main-form").on('submit', function (e) {
 
  async function init(){
     populate_form();
-    console.log(chocolate_data[0])
+    // console.log(chocolate_data[0])
+    // console.log(embeddings)
  }
 
  init();
