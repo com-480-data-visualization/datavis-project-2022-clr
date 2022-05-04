@@ -77,7 +77,17 @@ Clicking on a location will bring up a list of cards to the right of the globe, 
 
 More general information about how a bar's characteristics influence its rating will be shown on a separate element below. (@Ludovica I think this is an extra, if so feel free to move this paragraph to that section or smth).
 
-* Viz 2 (__Rouby__)
+* __Create Your Favorite Bar__: Given the amount of data we have regarding chocolate bars, the ingredients used for their production, the characteristics related to each bar, and the overall rating, we have decided to provide the user with the capability of creating their very own chocolate bar.
+
+The user is able to provide some information about a chocolate bar they have always wanted to try. This information describes the percentage of cocoa used in that bar, the main ingredients they'd like to use (we're currently using a set of ingredients that we have gathered from the datasets). The user also supplies 5 characteristics they'd like to have in their bar. Finally, by correlating the provided information with the data we have, we provide the user with the top 5 bars that match their preferences.
+
+In order to obtain these results, we define a distance function from the user's data and each bar which assigns a score based on a set of factors defined by us. The factors are easily changed and will be experimented further to find the best set of factors.
+
+As for the cocoa percentage, the absolute difference is used. As for the ingredients, we're giving higher score to bars that match more ingredients provided by the users. However, since we have a big list of characteristics for chocolate bars, we have decided to use two different methods for calculating the score. The first function matches the ingredients and just bases the score on the common elements between the bar and the user data. The other method depends using word embeddings to provide more context while choosing the bar that is closest to the user's preferences without having to match literal text. We are currently providing the user with the option to use anyone of them.
+
+For the next phase we'd like to test how accurate our scoring function and suggestion engine. We will try to mimic real users and provide more examples to see how the function performs.
+
+Finally, we will use the the results of this experiment to provide the user with an analytical visual representation of their choices as compared to other bars and how each of them was rated and our predicted likeability of their bar.
 
 #### Extra ideas (__Ludovica__)
 
