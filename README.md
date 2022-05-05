@@ -59,11 +59,12 @@ The following are hand-drawn sketches showing the general outline of our website
 
 ### Tools / Lectures
 
-We will mostly stick to using D3 for our project. We will be using most basic D3 features as described in the "D3" and "Interactive D3" lectures
-such as creating html and svg elements for each item in our dataset and displaying time-series data.
+We will mostly stick to using D3 for our project. We will be using most basic D3 features as described in the "D3" and "Interactive D3" lectures such as creating html and svg elements for each item in our dataset and displaying time-series data.
 We will also show geographical data on a globe using information shown in the "Maps" and "Practical Maps" features.
+Possibly, we will try to integrate the D3 code of the globe with graphical elements from [giojs](https://giojs.org/), include some on scroll animations using [aos](https://michalsnik.github.io/aos/) and an animated landing page with [animejs](https://animejs.com/).
 
-As for the website's styling, we could either create it from scratch, or use a framework such as bootstrap, based on the amount of time we have available to finish the project.
+As for the website's styling, we will either create it from scratch, or use a framework such as bootstrap, based on the amount of time we have available to finish the project.
+
 
 ### Goal breakdown
 
@@ -75,9 +76,8 @@ We have identified two independent main pieces that should make up our final vis
 
 Clicking on a location will bring up a list of cards to the right of the globe, one for each chocolate bar that has a relationship (production or harvesting) with that location, showing more information such as company name, main characteristics and ingredients, cocoa percentage, and their average score based on reviews.
 
-More general information about how a bar's characteristics influence its rating will be shown on a separate element below. (@Ludovica I think this is an extra, if so feel free to move this paragraph to that section or smth).
 
-* __Create Your Favorite Bar__: Given the amount of data we have regarding chocolate bars, the ingredients used for their production, the characteristics related to each bar, and the overall rating, we have decided to provide the user with the capability of creating their very own chocolate bar.
+* __Create Your Favorite Bar__: Given the amount of data we have regarding chocolate bars, the ingredients used for their production, the characteristics related to each bar, and the overall rating, we have decided to provide the user with the capability of find their very own ideal chocolate bar.
 
 The user is able to provide some information about a chocolate bar they have always wanted to try. This information describes the percentage of cocoa used in that bar, the main ingredients they'd like to use (we're currently using a set of ingredients that we have gathered from the datasets). The user also supplies 5 characteristics they'd like to have in their bar. Finally, by correlating the provided information with the data we have, we provide the user with the top 5 bars that match their preferences.
 
@@ -85,11 +85,22 @@ In order to obtain these results, we define a distance function from the user's 
 
 As for the cocoa percentage, the absolute difference is used. As for the ingredients, we're giving higher score to bars that match more ingredients provided by the users. However, since we have a big list of characteristics for chocolate bars, we have decided to use two different methods for calculating the score. The first function matches the ingredients and just bases the score on the common elements between the bar and the user data. The other method depends using word embeddings to provide more context while choosing the bar that is closest to the user's preferences without having to match literal text. We are currently providing the user with the option to use anyone of them.
 
-For the next phase we'd like to test how accurate our scoring function and suggestion engine. We will try to mimic real users and provide more examples to see how the function performs.
+In particular, the 1200 possible flavours are reduced in a preprocessing step to 200 based on clustering of the word embeddings. Each chocolate bar is then represented by the average vector of its ingredients and each ingredients is also represented by its word embedding (using ```spacy``` to retrieve the word embeddings). The ingredients selected by the user are mapped to the vector and averaged to obtain the overall flavour. Finally, the cosine similarity with the vectors corresponding to the chocolate bars is computed to sort the results. 
+
+For the next phase we'd like to test how accurate our scoring function and suggestion engine are. We will try to mimic real users and provide more examples to see how the function performs.
 
 Finally, we will use the the results of this experiment to provide the user with an analytical visual representation of their choices as compared to other bars and how each of them was rated and our predicted likeability of their bar.
 
-#### Extra ideas (__Ludovica__)
+#### Extra ideas 
+
+The two main visualizations will be accompanied, if time allows, by lots of contextual information about chocolate. Given the richness of the website that published our dataset, [http://flavorsofcacao.com/](http://flavorsofcacao.com/), we would like to exploit most of the information it contains about the bean-to-bar process (the process of creating the chocolate bar), as well as some country level information and a discussion on the chocolate percentage, the ingredients and flavours.
+
+In particular, the landing page will feature an svg logo we will create and the bean-to-bar process. At this step, we will focus on providing the information in an interactive and attractive manner. Differently from the original website, where long textual descriptions dominate, we will provide short, to the point, texts with many graphical elements denoting the steps.
+
+Regarding the first visualization, per country regulations and quality surveys will be included, allowing the user to understand more about the geography of chocolate. 
+
+Finally, the second visualization will be accompanied by more general information about how a bar's characteristics influence its rating. In particular, we will increase the number of resulting bars and provide some general visualizations (possibly using [chartjs](https://www.chartjs.org/)) about the ratings and geographical distributions of the results. The visualization will come with some tetual descriptions of how the ingredients influence the flavour, how each flavour is produced and what it means to say that a chocolate bar has a certain cocoa percentage.
+
 
 ### Demo
 You can preview our project [on GitHub pages.](https://com-480-data-visualization.github.io/datavis-project-2022-clr/)
