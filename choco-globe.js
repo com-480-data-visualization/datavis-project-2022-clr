@@ -32,12 +32,13 @@ function createCountries(elem, path, worldData) {
 
 function drawCard(elem, card) {
     elem.selectAll("*").remove();
-    elem.append('p').text(d => "Company: " + d.company_names);
-    elem.append('p').text(d => "Bean origin: " + d.country_bean_origin);
-    elem.append('p').text(d => "Cocoa percentage: " + d.cocoa_percent);
-    elem.append('p').text(d => "Specific Bean name: " + d.specific_bean_origin);
-    elem.append('p').text(d => "Reviewed in: " + d.review_date);
-    elem.append('p').text(d => "Rating: " + d.rating);
+    elem.append('h5').attr("class", 'card-title text-black').text(d => "Company: " + d.company_names);
+
+    elem.append('p').attr("class", 'card-text').attr("id", 'cardtext').text(d => "Bean origin: " + d.country_bean_origin);
+    elem.append('p').attr("class", 'card-text').attr("id", 'cardtext').text(d => "Cocoa percentage: " + d.cocoa_percent);
+    elem.append('p').attr("class", 'card-text').attr("id", 'cardtext').text(d => "Specific Bean name: " + d.specific_bean_origin);
+    elem.append('p').attr("class", 'card-text').attr("id", 'cardtext').text(d => "Reviewed in: " + d.review_date);
+    elem.append('p').attr("class", 'card-text').attr("id", 'cardtext').text(d => "Rating: " + d.rating);
 }
 
 function flyingArc(link, projection, skyProjection) {

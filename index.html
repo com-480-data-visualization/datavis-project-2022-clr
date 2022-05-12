@@ -13,97 +13,195 @@
 </head>
 
 
-<body class="container bg-dark">
+<body class="">
     <script>
         AOS.init();
     </script>
 
-    <nav class="navbar navbar-light bg-light">
+    <!-- <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
             <form class="d-flex">
                 <a class="btn btn-outline-success mt-1 ps-5" type="button" href="index.html">A World of Chocolate</a>
                 <a class="btn btn-outline-secondary mt-1 ps-5" type="button" href="recipe.html">Create Your Favorite Bar</a>
             </form>
         </div>
-    </nav>
-    <div class="container bg-dark">
-        <div class="row">
+    </nav> -->
+    <div class="row justify-content-center">
+        <!-- <div class="col-3 ms-1 me-1 mt-1 mb-1">
+            <div id="pages" class="list-group">
+                <a class="list-group-item list-group-item-action" href="#1">Chocolate Factory</a>
+                <a class="list-group-item list-group-item-action" href="#2">A world of chocolate</a>
+                <a class="list-group-item list-group-item-action" href="#3">Your favourite chocolate bar</a>
+            </div>
 
-            <div class="col-12">
-                <div id="c" class="carousel slide">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active" classname="icon">
-                            <svg class="d-block w-100">
-        
-                            </svg>
-                            <div id="cards"></div>
-                        </div>
-                        <div class="carousel-item">
-                            <form class="d-block w-100" id="main-form">
-                                <h2 style="text-decoration: underline; margin: 2em 0;">Create your favorite Chocolate bar</h2>
+        </div> -->
+        <div class="col-9">
+            <div data-spy="scroll" data-target="#pages" data-offset="0" class="scrollspy-example">
+                <div class="col-12 mb-5" data-aos="fade-right">
 
-                                <div class="mb-3" style="padding-bottom: 2em;">
-                                    <h4>Choose a name for your new chocolate bar </h4>
-                                    <input type="text" class="form-control" id="choco-name" aria-describedby="emailHelp">
-                                </div>
-
+                    <div id="c" class="carousel slide">
+                        <ol class="carousel-indicators">
+                            <li data-target="#c" data-slide-to="0" class="active"></li>
+                            <!-- <li data-target="#c" data-slide-to="1"></li>
+                            <li data-target="#c" data-slide-to="2"></li> -->
+                        </ol>
 
 
-                                <div class="mb-3" style="padding-bottom: 2em;">
-                                    <h4>Choose the percentage of coco in your bar <span id="coco_per_val"></span> </h4>
-                                    <input type="range" class="form-range" id="choco-cocoa" min="1" max="100" value="70" onchange="update_coco_percent_display()">
-                                </div>
-
-
-                                <h4>Choose your favorite ingredients </h4>
-                                <div class="mb-3 form-check" id="ingredients" style="padding-bottom: 2em;">
-
-                                </div>
-
-                                <h4>Choose your favorite flavors </h4>
-                                <div class="mb-3 form-check" id="flavors" style="padding-bottom: 2em;">
-                                    <select class="selectpicker" data-live-search="true" data-width="fit" multiple data-max-options="5" id="choco-flavors">
-                                    </select>
-                                </div>
-
-                                <h4>Would you like to use Word Embeddings while matching?</h4>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="useEmbedding" id="useEmbedding1" value="1">
-                                    <label class="form-check-label" for="useEmbedding1">
-                                        Yes
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="useEmbedding" id="useEmbedding2" value="0" checked>
-                                    <label class="form-check-label" for="useEmbedding2">
-                                        No
-                                    </label>
-                                </div>
-
-                                <button type="submit" class="btn btn-primary" style="margin-top: 2em;">Submit</button>
-                            </form>
-
-                            <div class="row" id="results">
-
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <h1 class="justify-content-center" id="1">Chocolate Factory</h1>
+                                <div class="w-100 h-100">text</div>
                             </div>
 
                         </div>
-
+                        <!-- <a class="carousel-control-prev" href="#c" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#c" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a> -->
                     </div>
-                    <a class="carousel-control-prev" href="#c" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#c" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
+
                 </div>
+
+                <div class="col-12 mb-5" data-aos="fade-right">
+                    <div id="d" class="carousel slide">
+                        <ol class="carousel-indicators">
+                            <li data-target="#d" data-slide-to="0" class="active"></li>
+                            <li data-target="#d" data-slide-to="1"></li>
+                            <!-- <li data-target="#d" data-slide-to="2"></li> -->
+                        </ol>
+
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" classname="icon">
+                                <h1 class="justify-content-center" id="2">A world of chocolate</h1>
+                                <div class="row">
+                                    <div class="col-3" id="cards">
+
+                                    </div>
+                                    <div class="col-9">
+                                        <svg class="d-block w-100">
+                    
+                                        </svg>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <h1 class="justify-content-center" id="2">A world of chocolate</h1>
+
+                                <div class="w-100 h-100">text</div>
+                            </div>
+
+                        </div>
+                        <!-- <a class="carousel-control-prev" href="#d" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#d" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a> -->
+                    </div>
+
+                </div>
+
+
+
+                <div class="col-12 mb-5" data-aos="fade-right">
+                    <div id="e" class="carousel slide">
+                        <ol class="carousel-indicators">
+                            <li data-target="#e" data-slide-to="0" class="active"></li>
+                            <li data-target="#e" data-slide-to="1"></li>
+                            <!-- <li data-target="#e" data-slide-to="2"></li> -->
+                        </ol>
+
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-3" id="results">
+                                    </div>
+                                    <div class="col-9">
+                                        <form class="d-block w-100" id="main-form">
+                                            <h1 id="3" class="justify-content-center">Your favourite chocolate finder</h1>
+
+                                            <div>
+                                                <p>Choose a name for your new chocolate bar </p>
+                                                <input type="text" class="form-control" id="choco-name" aria-describedby="emailHelp">
+                                            </div>
+
+
+
+                                            <div>
+                                                <p>Choose the percentage of coco in your bar <span id="coco_per_val"></span> </p>
+                                                <input type="range" class="form-range" id="choco-cocoa" min="1" max="100" value="70" onchange="update_coco_percent_display()">
+                                            </div>
+
+
+                                            <p>Choose your favorite ingredients </p>
+                                            <div class="mb-3 form-check" id="ingredients">
+
+                                            </div>
+
+                                            <p>Choose your favorite flavors </p>
+                                            <div class="form-check" id="flavors">
+                                                <select class="selectpicker" data-live-search="true" data-width="fit" multiple data-max-options="5" id="choco-flavors">
+                                                        </select>
+                                            </div>
+
+                                            <p>Would you like to use Word Embeddings while matching?</p>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="useEmbedding" id="useEmbedding1" value="1">
+                                                <label class="form-check-label" for="useEmbedding1">
+                                                            Yes
+                                                        </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="useEmbedding" id="useEmbedding2" value="0" checked>
+                                                <label class="form-check-label" for="useEmbedding2">
+                                                            No
+                                                        </label>
+                                            </div>
+
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </form>
+
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                            <div class="carousel-item">
+                                <h1 id="3" class="justify-content-center">Your favourite chocolate finder</h1>
+
+                                <div class="w-100 h-100">text</div>
+                            </div>
+
+
+                        </div>
+                        <!-- <a class="carousel-control-prev" href="#e" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#e" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a> -->
+                    </div>
+
+                </div>
+
 
             </div>
 
         </div>
+
+
     </div>
+
 
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://d3js.org/topojson.v1.min.js"></script>
