@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'willywonkaregular';
+    src: url('./williewonka_font/willywonka-webfont.woff2') format('woff2'), url('./williewonka_font/willywonka-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 html,
 body {
     box-sizing: border-box;
@@ -7,7 +14,7 @@ body {
 }
 
 .carousel {
-    height: 90vh;
+    height: 100vh;
     width: 100%;
     overflow: hidden;
 }
@@ -17,22 +24,36 @@ body {
     width: 100%;
 }
 
+img {
+    vertical-align: middle;
+    max-height: 100%;
+    width: 100%;
+}
+
 .cardtext {
     color: black;
 }
 
 body,
 div {
-    background-color: white;
+    background-color: #fbe5c8;
 }
 
-h4,
-h3,
-h2,
-h1,
+#willie {
+    color: #d4af37;
+    outline-color: #5e382f;
+    font-family: 'willywonkaregular';
+    justify-content: center;
+    margin: 3px;
+}
+
 p,
-div {
-    color: black;
+.card,
+.card-title,
+.selectpicker,
+.form-check {
+    color: #5e382f;
+    font-family: monospace;
 }
 
 .icon {
@@ -61,7 +82,6 @@ svg {
 }
 
 .card {
-    background: #eee;
     color: black;
 }
 
