@@ -13,66 +13,62 @@
 
 html,
 body {
-    background: #D1AF94;
-	width: 100%;
-	height: 100%;
+    background: white;
+    width: 100%;
+    height: 100%;
 }
 
 html {
-	padding: 10px;
-	scroll-snap-type: y mandatory;
+    padding: 10px;
+    scroll-snap-type: y mandatory;
 }
 
 section {
-	margin: 10%;
-	scroll-snap-align: start;
+    margin: 10%;
+    scroll-snap-align: start;
 }
 
 .slider {
-  width: 100%;
-  text-align: center;
-  overflow: hidden;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
 }
 
-.slides > div {
-  scroll-snap-align: start;
-  flex-shrink: 0;
-  width: 100%;
-  height: 100vh;
-  margin-right: 50px;
-  border-radius: 10px;
-  transform-origin: center center;
-  transform: scale(1);
-  transition: transform 0.5s;
-  position: relative;
-  
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.slides>div {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    width: 100%;
+    height: 100vh;
+    margin-right: 50px;
+    border-radius: 10px;
+    transform-origin: center center;
+    transform: scale(1);
+    transition: transform 0.5s;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .slides {
-  display: flex;
-  
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  
-  /*
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    /*
   scroll-snap-points-x: repeat(300px);
   scroll-snap-type: mandatory;
   */
 }
 
 #chocolate-bar {
-	filter: drop-shadow(10px 10px 10px #222222);
-	transition: transform .2s;
+    filter: drop-shadow(10px 10px 10px #753d22);
+    transition: transform .2s;
 }
 
 #chocolate-bar:hover {
-	transform: scale(1.2);
+    transform: scale(1.2);
 }
 
 nav {
@@ -85,11 +81,11 @@ nav {
 }
 
 .hero {
-	height: 100vh;
+    height: 100vh;
 }
 
 .hero div {
-	display: inline-block;
+    display: inline-block;
 }
 
 #logo {
@@ -159,8 +155,7 @@ img {
 }
 
 .willie {
-    color: #d4af37;
-    outline-color: #5e382f;
+    color: #753d22;
     font-family: 'willywonkaregular';
     justify-content: center;
     margin: 3px;
@@ -171,8 +166,8 @@ p,
 .card-title,
 .selectpicker,
 .form-check {
-    color: #5e382f;
-    font-family: monospace;
+    color: #51280d;
+    font-family: 18px/1.4 Helvetica, Arial, sans-serif;
 }
 
 .icon {

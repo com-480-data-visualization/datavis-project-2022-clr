@@ -18,17 +18,17 @@
         AOS.init();
     </script>
 
-    <section class="slider">
-		<div class="slides">
-			<div>
-				<a href="#intro-text" id="chocolate-bar">
-					<img src="bar.png" alt="chocolate bar">
-				</a>
-			</div>
-			<div id="intro-text">
-				Some choice intro text
-			</div>
-		</div>
+    <section class="slider row justify-content-center">
+        <div class="slides col-9">
+            <div>
+                <a href="#intro-text" id="chocolate-bar">
+                    <img src="bar.png" alt="chocolate bar">
+                </a>
+            </div>
+            <div id="intro-text">
+                <p>Some choice intro text</p>
+            </div>
+        </div>
     </section>
     <!-- <div class="page justify-content-center">
         <div class="col-12 pb-5 pt-5 parent" data-aos="fade-in" id="choc">
@@ -37,125 +37,80 @@
         </div> 
     </div> -->
 
-    <section class="page justify-content-center">
-        <div data-spy="scroll" data-target="#pages" data-offset="0" class="scrollspy-example">
+    <section class="row justify-content-center">
 
-            <div class="pb-5 pt-5" data-aos="fade-in">
-                <div id="d" class="carousel slide">
-                    <ol class="carousel-indicators">
-                        <li data-target="#d" data-slide-to="0" class="active"></li>
-                        <li data-target="#d" data-slide-to="1"></li>
-                        <!-- <li data-target="#d" data-slide-to="2"></li> -->
-                    </ol>
+        <div class="col-9 pb-5 pt-5" data-aos="fade-in">
 
-					<h1 class="willie" id="willie">A world of chocolate</h1>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active" classname="icon">
-                            <div class="row">
-                                <div class="col-3" id="cards">
-
-                                </div>
-                                <div class="col-9">
-                                    <svg id="globe" class="d-block w-100">
-                                    </svg>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="w-100 h-100">text</div>
-                        </div>
+            <div>
+                <h1 class="willie" id="willie">A world of chocolate</h1>
+                <div class="row">
+                    <div class="col-3" id="cards">
 
                     </div>
-                    <a class="carousel-control-prev" href="#d" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#d" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
+                    <div class="col-9">
+                        <svg id="globe" class="d-block w-100">
+                                    </svg>
+
+                    </div>
                 </div>
 
+            </div>
+
+            <div id="intro-text">
+                <p>Some choice intro text</p>
             </div>
 
         </div>
     </section>
 
-    <section class="page justify-content-center">
+    <section class="row justify-content-center">
 
-        <div class="pb-5 pt-5" data-aos="fade-in">
-            <div id="e" class="carousel slide">
-                <ol class="carousel-indicators">
-                    <li data-target="#e" data-slide-to="0" class="active"></li>
-                    <li data-target="#e" data-slide-to="1"></li>
-                    <!-- <li data-target="#e" data-slide-to="2"></li> -->
-                </ol>
+        <div class="col-9 pb-5 pt-5" data-aos="fade-in">
+            <h1 id="willie" class="willie">Your favourite chocolate finder</h1>
+            <div class="row">
+                <div class="col-3" id="results">
+                </div>
+                <div class="col-9">
+                    <form class="d-block w-100" id="main-form">
 
-				<h1 id="willie" class="willie">Your favourite chocolate finder</h1>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="row">
-                            <div class="col-3" id="results">
-                            </div>
-                            <div class="col-9">
-                                <form class="d-block w-100" id="main-form">
-
-                                    <div>
-                                        <p>Choose a name for your new chocolate bar </p>
-                                        <input type="text" class="form-control" id="choco-name" aria-describedby="emailHelp">
-                                    </div>
-
-                                    <div>
-                                        <p>Choose the percentage of coco in your bar <span id="coco_per_val"></span> </p>
-                                        <input type="range" class="form-range" id="choco-cocoa" min="1" max="100" value="70" onchange="update_coco_percent_display()">
-                                    </div>
-
-                                    <p>Choose your favorite ingredients </p>
-                                    <div class="mb-3 form-check" id="ingredients">
-                                    </div>
-
-                                    <p>Choose your favorite flavors </p>
-                                    <div class="form-check" id="flavors">
-                                        <select class="selectpicker" data-live-search="true" data-width="fit" multiple data-max-options="5" id="choco-flavors">
-                                                        </select>
-                                    </div>
-
-                                    <p>Would you like to use Word Embeddings while matching?</p>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="useEmbedding" id="useEmbedding1" value="1">
-                                        <label class="form-check-label" for="useEmbedding1">
-                                                            Yes
-                                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="useEmbedding" id="useEmbedding2" value="0" checked>
-                                        <label class="form-check-label" for="useEmbedding2">
-                                                            No
-                                                        </label>
-                                    </div>
-
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </form>
-                            </div>
+                        <div>
+                            <p>Choose a name for your new chocolate bar </p>
+                            <input type="text" class="form-control" id="choco-name" aria-describedby="emailHelp">
                         </div>
 
-                    </div>
-                    <div class="carousel-item">
-                        <div class="w-100 h-100">text</div>
-                    </div>
+                        <div>
+                            <p>Choose the percentage of coco in your bar <span id="coco_per_val"></span> </p>
+                            <input type="range" class="form-range" id="choco-cocoa" min="1" max="100" value="70" onchange="update_coco_percent_display()">
+                        </div>
 
+                        <p>Choose your favorite ingredients </p>
+                        <div class="mb-3 form-check" id="ingredients">
+                        </div>
+
+                        <p>Choose your favorite flavors </p>
+                        <div class="form-check" id="flavors">
+                            <select class="selectpicker" data-live-search="true" data-width="fit" multiple data-max-options="5" id="choco-flavors">
+                                                        </select>
+                        </div>
+
+                        <p>Would you like to use Word Embeddings while matching?</p>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="useEmbedding" id="useEmbedding1" value="1">
+                            <label class="form-check-label" for="useEmbedding1">
+                                                            Yes
+                                                        </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="useEmbedding" id="useEmbedding2" value="0" checked>
+                            <label class="form-check-label" for="useEmbedding2">
+                                                            No
+                                                        </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
                 </div>
-                <a class="carousel-control-prev" href="#e" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#e" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
             </div>
-
         </div>
     </section>
 
