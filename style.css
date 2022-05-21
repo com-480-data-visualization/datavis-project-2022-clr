@@ -28,13 +28,22 @@ section {
     scroll-snap-align: start;
 }
 
-.slider {
+.sliderh {
     width: 100%;
     text-align: center;
     overflow: hidden;
 }
 
-.slides>div {
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    transform: scale(1.2);
+}
+
+.slidesh>div {
     scroll-snap-align: start;
     flex-shrink: 0;
     width: 100%;
@@ -45,12 +54,12 @@ section {
     transform: scale(1);
     transition: transform 0.5s;
     position: relative;
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     align-items: center;
 }
 
-.slides {
+.slidesh {
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
@@ -98,41 +107,6 @@ nav {
     height: auto;
 }
 
-
-/* img {
-    margin: 20px;
-    right: 0px;
-    -webkit-transition: right 1500ms;
-    -moz-transition: right 1500ms;
-    -ms-transition: right 1500ms;
-    -o-transition: right 1500ms;
-    transition: right 1500ms;
-}
-
-.parent {
-    position: relative;
-    top: 0;
-    left: 0;
-}
-
-.image1 {
-    position: absolute;
-    top: 25px;
-    left: 25px;
-    z-index: 3;
-}
-
-.image2 {
-    position: absolute;
-    top: 25px;
-    left: 25px;
-    z-index: 1;
-}
-
-#css:hover img {
-    right: 50px;
-} */
-
 .carousel {
     height: 100vh;
     width: 100%;
@@ -150,14 +124,9 @@ img {
     width: 100%;
 }
 
-.cardtext {
-    color: black;
-}
-
 .willie {
     color: #753d22;
     font-family: 'willywonkaregular';
-    justify-content: center;
     margin: 3px;
 }
 
@@ -165,7 +134,8 @@ p,
 .card,
 .card-title,
 .selectpicker,
-.form-check {
+.form-check,
+.form-select {
     color: #51280d;
     font-family: 18px/1.4 Helvetica, Arial, sans-serif;
 }
@@ -175,12 +145,6 @@ p,
     align-items: center;
     justify-content: center;
 }
-
-
-/* body {
-    display: flex;
-    height: 100vh;
-} */
 
 svg {
     flex: 4;
@@ -193,6 +157,13 @@ svg {
 #cards {
     flex: 2;
     overflow: scroll;
+    height: 80vh;
+}
+
+#results {
+    flex: 2;
+    overflow: scroll;
+    height: 80vh;
 }
 
 .card {

@@ -169,6 +169,8 @@ class GlobeDrawer {
 
     drawCards(cards) {
         console.log(cards);
+        this.labelElem.select('p').remove();
+
         this.labelElem.selectAll("div")
             .data(cards)
             .join("div")

@@ -36,7 +36,6 @@ $("#main-form").on('submit', function(e) {
 
     //ajax call here
     console.log(e)
-    var name = $("#choco-name")[0].value
     var cocoa = $("#choco-cocoa")[0].value
     var checkboxes = $("[name='choco-ingredients']")
     var flavors_select = $("#choco-flavors")[0]
@@ -67,7 +66,7 @@ $("#main-form").on('submit', function(e) {
     var results_div = $("#results");
     results_div.empty()
     results_div.append(`<p >The chocolate bars that are very similar to yours are: </p>`)
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 20; i++) {
         // console.log(chocolate_data[distances[i].idx])
         //  console.log(distances[i])
         var company_html = `
