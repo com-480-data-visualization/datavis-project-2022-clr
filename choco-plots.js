@@ -1,8 +1,3 @@
-function make_radial_plot() {
-
-
-}
-
 function make_sankey_plot() {
     var obj = document.getElementById('sankey');
 
@@ -28,11 +23,10 @@ function make_sankey_plot() {
 
     var to_remove = [];
 
-    if (places.length > 70) {
+    if (places.length > 20) {
         for (let i = 0; i < places.length; i++) {
 
-            if (places.filter((value) => value[0] == places[i][0]).length < 3 || places.filter((value) => value[1] == places[i][1]).length < 3) {
-                console.log(places[i])
+            if (places.filter((value) => value[0] == places[i][0]).length < 12 || places.filter((value) => value[1] == places[i][1]).length < 12) {
                 to_remove.push(places[i]);
             }
 
@@ -68,13 +62,13 @@ function make_sankey_plot() {
             sankey: {
                 node: {
                     label: {
-                        color: 'black'
+                        color: '#51280d'
                     }
                 },
                 link: {
                     color: {
-                        fillOpacity: 1, // Transparency of the link.
-                        stroke: 'brown', // Color of the link border.
+                        fillOpacity: 0.2, // Transparency of the link.
+                        stroke: '#753d22', // Color of the link border.
                         strokeWidth: 0.1 // Thickness of the link border (default 0).
                     },
                 }
@@ -99,53 +93,101 @@ function make_sankey_plot() {
 
 }
 
+function make_radial_plot() {
 
-function calculate_chocolate_scores(coco_percent, new_ingredients_indices, new_flavors_idx, use_vectors) {
-    var distances = []
+    var mean_ratings = {};
+    var selected_labels = [
+        'spicy',
+        'oily',
+        'classic',
+        'almond',
+        'cocoa',
+        'sweet',
+        'coffee'
+    ];
 
-    for (const key in chocolate_data) {
-        var bar = chocolate_data[key];
-        var coco_percent_similarity = 100 - Math.abs(bar['Cocoa Percent Int'] - coco_percent)
-        var ingredients_common = 0;
-        for (let i = 0; i < new_ingredients_indices.length; i++) {
-            ingredients_common += (bar['Ingredients List'].indexOf(ingredients[new_ingredients_indices[i]]) != -1) ? 1 : 0;
-        }
+    const average = arr => arr.reduce((p, c) => p + c, 0) / arr.length;
 
-        if (!use_vectors) {
-            console.log("no vectors")
-            var flavors_common = 0;
-            for (let i = 0; i < new_flavors_idx.length; i++) {
-                flavors_common += (bar['New Flavours'].indexOf(flavours[new_flavors_idx[i]]) != -1) ? 1 : 0;
+    for (let i = 0; i < selected_labels.length; i++) {
+        label = selected_labels[i];
+        console.log(label)
+        mean_ratings[label] = [];
+        for (const key in chocolate_data) {
+            var bar = chocolate_data[key];
+            if (bar["Most Memorable Characteristics"].includes(label)) {
+                mean_ratings[label].push(bar["Rating"]);
             }
-            var score = (coco_percent_similarity / 100 * COCO_PERCENT_FACTOR) + ((ingredients_common / new_ingredients_indices.length) * INGREDIENTS_FACTOR) + ((flavors_common / new_flavors_idx.length) * FLAVORS_FACTOR)
-            distances.push({ idx: key, sc: score });
-        } else {
-            // console.log("using vectors")
-            var flavor_vectors = []
-            for (let i = 0; i < new_flavors_idx.length; i++) {
-                flavor_vectors.push(embeddings[flavours[new_flavors_idx[i]]]['vector'])
-            }
-            // console.log("pushed vectors: ", flavor_vectors)
-            var flavors_average = calculate_mean(flavor_vectors)
-                // console.log("average: ", flavors_average)
-            var flavors_score = cosinesim(flavors_average, bar['Flavours Vectors']);
-            // console.log("score: ", flavors_score)
-            var score = (coco_percent_similarity / 100 * COCO_PERCENT_FACTOR) + ((ingredients_common / new_ingredients_indices.length) * INGREDIENTS_FACTOR) + ((flavors_score / 1) * FLAVORS_FACTOR)
-            distances.push({ idx: key, sc: score });
-        }
 
+        }
+        console.log(mean_ratings[label]);
+        mean_ratings[label] = average(mean_ratings[label]);
     }
 
-    distances.sort((a, b) => b.sc - a.sc)
-        //  for(let i = 0; i < 5; i++){
-        //      console.log(chocolate_data[distances[i].idx])
-        //      console.log(distances[i])
-        //  }
-    return distances
+
+
+    const data = {
+        labels: selected_labels,
+        datasets: [{
+            label: 'Radar Plot of Flavours',
+            data: Object.values(mean_ratings),
+            fill: true,
+            backgroundColor: '#51280d',
+            borderColor: 'white',
+            pointBackgroundColor: '#51280d',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: '#51280d'
+        }]
+    };
+
+    const config = {
+        type: 'radar',
+        data: data,
+        options: {
+            elements: {
+                line: {
+                    borderWidth: 3
+                }
+            },
+            scales: {
+                grid: {
+                    display: false
+                },
+            },
+
+            // plugins: {
+            //     tooltip: {
+            //         callbacks: {
+            //             footer: footer,
+            //         }
+            //     }
+        },
+
+    };
+
+    var footer = (tooltipItems) => {
+        let sum = [];
+        let text = ['\n\nChocolate Bar\n:'];
+
+        tooltipItems.forEach(function(tooltipItem) {
+            sum += tooltipItem.label;
+
+        });
+        console.log(sum)
+        return text;
+    };
+
+
+    var radar_plot = new Chart(
+        document.getElementById('radial'),
+        config
+    );
+
 }
 
 async function init() {
     make_sankey_plot();
+    make_radial_plot();
     // console.log(chocolate_data[0])
     // console.log(embeddings)
 }
