@@ -179,13 +179,13 @@ svg {
 
 .country {
     stroke-width: 1px;
-    stroke: #888;
-    fill: #eee;
+    stroke: brown;
+    fill: #D1AF94;
     opacity: 0.8;
 }
 
 .globe-background {
-    fill: #D1AF94;
+    fill: #eee;
 }
 
 .graticule {

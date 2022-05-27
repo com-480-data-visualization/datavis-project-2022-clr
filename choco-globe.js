@@ -20,14 +20,31 @@ function createGraticule(elem, path, divisions = 10) {
         .style("stroke", "#ccc");
 }
 
-function createCountries(elem, path, worldData) {
+function createCountries(elem, path, worldData, ratingsMap) {
     const countryData = topojson.feature(worldData, worldData.objects.countries).features
+
+	console.dir(ratingsMap)
+
+	const min = Math.min(...ratingsMap.values());
+	const max = Math.max(...ratingsMap.values());
+	const range = max - min
+
+	const colorInterp = d3.interpolate("white", "red");
+
+	console.log(min, max, colorInterp);
+	const ratingScore = (d) => {
+		if (!ratingsMap.has(d.properties.name)) {
+			return 0.5;
+		}
+		return (ratingsMap.get(d.properties.name) - min) / range;
+	}
 
     elem.selectAll(".country")
         .data(countryData)
         .enter().append("path")
         .attr("class", "country")
-        .attr("d", path);
+        .attr("d", path)
+		.style("fill", d => colorInterp(ratingScore(d)));
 }
 
 function drawCard(elem, card) {
@@ -47,8 +64,8 @@ function flyingArc(link, projection, skyProjection) {
         return interpolator(loc)
     }
 
-    var source = [link.longitude, link.latitude],
-        target = [link.longitude_beans, link.latitude_beans];
+    var source = [link.longitude + 0.5, link.latitude],
+        target = [link.longitude_beans - 0.5, link.latitude_beans];
 
     var mid1 = locationOnArc(source, target, .333);
     var mid2 = locationOnArc(source, target, .667);
@@ -73,9 +90,16 @@ function fadeAtEdge(link, projection) {
     var fade = d3.scaleLinear().domain([-.1, 0]).range([0, .1])
     var dist = start_dist < end_dist ? start_dist : end_dist;
 
-    return fade(dist)
+    return fade(dist);
 }
 
+function createRatingMap(chocoData) {
+	return new Map(
+		chocoData.map(object => {
+			return [object.location_name, object.rating_mean];
+		}),
+	);
+}
 
 class GlobeDrawer {
     constructor(elem, labelElem, countryData, chocoData, beanData, linkData) {
@@ -91,14 +115,16 @@ class GlobeDrawer {
 
         this.path = d3.geoPath().projection(this.projection);
 
-        this.elem.append("circle")
+		this.elem.append("circle")
             .attr("cx", center[0])
             .attr("cy", center[1])
             .attr("r", this.projection.scale())
             .attr("class", "globe-background");
 
-        createGraticule(this.elem, this.path);
-        createCountries(this.elem, this.path, countryData);
+
+        //createGraticule(this.elem, this.path);
+		const ratingsMap = createRatingMap(chocoData);
+        createCountries(this.elem, this.path, countryData, ratingsMap);
 
         this.chocoMarkerGroup = elem.append('g');
         this.beansMarkerGroup = elem.append('g');
@@ -121,15 +147,15 @@ class GlobeDrawer {
 
     draw() {
         this.elem.selectAll("path").attr("d", this.path);
-        this.drawMarkers(this.chocoMarkerGroup, this.chocoData, "steelblue");
-        this.drawMarkers(this.beansMarkerGroup, this.beanData, "chocolate");
+        this.drawMarkers(this.chocoMarkerGroup, this.chocoData, "steelblue", 0.5);
+        this.drawMarkers(this.beansMarkerGroup, this.beanData, "chocolate", -0.5);
         this.drawArcs(this.selectedLocation);
     }
 
-    drawMarkers(group, dataset, fill) {
+    drawMarkers(group, dataset, fill, longitudeOffset) {
         // Keep only points on this side of the sphere
         dataset = dataset.filter(d => {
-            const coordinate = [d.longitude, d.latitude];
+            const coordinate = [d.longitude + longitudeOffset, d.latitude];
             // Points on the other side of the sphere have a distance of > pi / 2 from the center.
             const arc_distance = d3.geoDistance(coordinate, this.projection.invert(center));
             return arc_distance <= 1.57;
@@ -138,8 +164,8 @@ class GlobeDrawer {
         group.selectAll("circle")
             .data(dataset)
             .join("circle")
-            .attr("cx", d => this.projection([d.longitude, d.latitude])[0])
-            .attr('cy', d => this.projection([d.longitude, d.latitude])[1])
+            .attr("cx", d => this.projection([d.longitude + longitudeOffset, d.latitude])[0])
+            .attr('cy', d => this.projection([d.longitude + longitudeOffset, d.latitude])[1])
             .attr("fill", fill)
             .attr("r", d => 3 + d.location_count / 20)
             .on("click", (event, d) => {
@@ -162,13 +188,12 @@ class GlobeDrawer {
         this.elem.selectAll("text")
             .data(textData)
             .join("text")
-            .attr("x", d => this.projection([d.longitude, d.latitude])[0] + offset)
-            .attr('y', d => this.projection([d.longitude, d.latitude])[1] - offset)
+            .attr("x", d => this.projection([d.longitude + longitudeOffset, d.latitude])[0] + offset)
+            .attr('y', d => this.projection([d.longitude + longitudeOffset, d.latitude])[1] - offset)
             .text(d => d.location_name);
     }
 
     drawCards(cards) {
-        console.log(cards);
         this.labelElem.select('p').remove();
 
         this.labelElem.selectAll("div")
@@ -231,7 +256,7 @@ const svg = d3.select('#globe').attr("viewBox", `0 -70 ${width} ${height+150}`);
 const cards = d3.select('#cards');
 
 Promise.all([
-    d3.json('https://gist.githubusercontent.com/mbostock/4090846/raw/d534aba169207548a8a3d670c9c2cc719ff05c47/world-110m.json'),
+    d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json'),
     d3.json('preprocessing/jsons/aggregated_dataset.json'),
     d3.json('preprocessing/jsons/bean_dataset.json'),
     d3.json('preprocessing/jsons/link_dataset.json'),
