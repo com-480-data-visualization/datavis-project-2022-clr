@@ -6,7 +6,7 @@
 }
 
 h5 {
-	margin-bottom: 1em;
+    margin-bottom: 1em;
 }
 
 * {
@@ -131,7 +131,12 @@ img {
 .willie {
     color: #753d22;
     font-family: 'willywonkaregular';
-    margin: 3px;
+    margin: 2px;
+}
+
+.narrative {
+    font-size: 18px;
+    color: #51280d;
 }
 
 p,
@@ -141,6 +146,11 @@ p,
 .form-check,
 .form-select {
     color: #51280d;
+    font-family: 18px/1.4 Helvetica, Arial, sans-serif;
+}
+
+h2 {
+    color: #753d22;
     font-family: 18px/1.4 Helvetica, Arial, sans-serif;
 }
 
@@ -171,32 +181,32 @@ svg {
 }
 
 .card {
-    color: black;
-	margin: 1em 0;
-	padding: 20px;
+    color: #753d22;
+    margin: 1em 0;
+    padding: 20px;
     text-align: left;
 }
 
 .card p {
-	margin-bottom: 0.2rem;
+    margin-bottom: 0.2rem;
 }
 
 .arc {
     opacity: .6;
-    stroke: darkred;
+    stroke: #51280d;
     stroke-linejoin: round;
     fill: none;
 }
 
 .country {
     stroke-width: 1px;
-    stroke: brown;
+    stroke: #753d22;
     fill: #D1AF94;
     opacity: 0.8;
 }
 
 .globe-background {
-    stroke: brown;
+    stroke: #753d22;
     fill: #eee;
 }
 
@@ -208,11 +218,11 @@ svg {
 }
 
 .legend {
-	fill: white;
-	stroke-width: 0.5px;
-	stroke: black;
+    fill: white;
+    stroke-width: 0.5px;
+    stroke: black;
 }
 
 .legend-title {
-	color: black;
+    color: black;
 }

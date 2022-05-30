@@ -114,9 +114,11 @@ function make_radial_plot() {
         mean_ratings[label] = [];
         for (const key in chocolate_data) {
             var bar = chocolate_data[key];
-            console.log(bar)
-            if (bar["Most Memorable Characteristics"].includes(label)) {
-                mean_ratings[label].push(bar["Rating"]);
+            if (bar["Most Memorable Characteristics"] !== undefined) {
+                if (bar["Most Memorable Characteristics"].includes(label)) {
+                    mean_ratings[label].push(bar["Rating"]);
+                }
+
             }
 
         }
