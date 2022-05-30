@@ -5,6 +5,10 @@
     font-style: normal;
 }
 
+h5 {
+	margin-bottom: 1em;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -168,6 +172,13 @@ svg {
 
 .card {
     color: black;
+	margin: 1em 0;
+	padding: 20px;
+    text-align: left;
+}
+
+.card p {
+	margin-bottom: 0.2rem;
 }
 
 .arc {
@@ -185,6 +196,7 @@ svg {
 }
 
 .globe-background {
+    stroke: brown;
     fill: #eee;
 }
 
@@ -193,4 +205,14 @@ svg {
     stroke: black;
     stroke-width: 1px;
     opacity: 0.8;
+}
+
+.legend {
+	fill: white;
+	stroke-width: 0.5px;
+	stroke: black;
+}
+
+.legend-title {
+	color: black;
 }
