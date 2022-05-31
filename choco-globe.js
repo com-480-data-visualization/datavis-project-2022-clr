@@ -23,22 +23,22 @@ function createGraticule(elem, path, divisions = 10) {
 function createCountries(elem, path, worldData, ratingsMap, colorInterp) {
     const countryData = topojson.feature(worldData, worldData.objects.countries).features
 
-	const ratingScore = (d) => {
-		if (!ratingsMap.has(d.properties.name)) {
-			return "white";
-		}
-		return colorInterp(ratingsMap.get(d.properties.name));
-	}
+    const ratingScore = (d) => {
+        if (!ratingsMap.has(d.properties.name)) {
+            return "white";
+        }
+        return colorInterp(ratingsMap.get(d.properties.name));
+    }
 
     elem.selectAll(".country")
-		.remove();
+        .remove();
 
     elem.selectAll(".country")
         .data(countryData)
         .enter().append("path")
         .attr("class", "country")
         .attr("d", path)
-		.style("fill", d => ratingScore(d));
+        .style("fill", d => ratingScore(d));
 }
 
 function drawCard(elem, card) {
@@ -47,8 +47,7 @@ function drawCard(elem, card) {
 		<p class="card-text">Bean used: <b>${d.specific_bean_origin.split(", batch")[0]}</b> from <b>${d.country_bean_origin}</b></p>
 		<p class="card-text">Cocoa percentage: <b>${d.cocoa_percent}</b></p>
 		<p class="card-text">Rating: <b>${d.rating}</b> (Reviewed in: ${d.review_date})</p>
-		`
-		);
+		`);
 }
 
 function drawBeansCard(elem, card) {
@@ -57,8 +56,7 @@ function drawBeansCard(elem, card) {
 		<p class="card-text">Located in: <b>${d.company_location}</b></p>
 		<p class="card-text">Cocoa percentage: <b>${d.cocoa_percent}</b></p>
 		<p class="card-text">Rating: <b>${d.rating}</b> (Reviewed in: ${d.review_date})</p>
-		`
-		);
+		`);
 }
 
 function flyingArc(link, projection, skyProjection) {
@@ -97,50 +95,50 @@ function fadeAtEdge(link, projection) {
 }
 
 function createRatingMap(chocoData) {
-	var ret =  new Map(chocoData.map(d => [d.location_name, d.rating_mean]));
-	// Manually fix naming inconsistencies
-	ret.set("United States of America", ret.get("U.S.A."));
-	ret.set("United Kingdom", ret.get("U.K."));
-	ret.set("Czechia", ret.get("Czech Republic"));
-	return ret;
+    var ret = new Map(chocoData.map(d => [d.location_name, d.rating_mean]));
+    // Manually fix naming inconsistencies
+    ret.set("United States of America", ret.get("U.S.A."));
+    ret.set("United Kingdom", ret.get("U.K."));
+    ret.set("Czechia", ret.get("Czech Republic"));
+    return ret;
 }
 
 function createLegend(elem, countryGroup, path, countryData, chocoRatingsMap, beansRatingsMap, colorInterp) {
-	var group = elem.append("g");
+    var group = elem.append("g");
 
-	var xPos = width - 110;
-	var yPos = -50;
+    var xPos = width - 110;
+    var yPos = -50;
 
-	// background
-	group.append("rect")
-		.attr("x", xPos)
-		.attr("y", yPos)
-		.attr("width", 100)
-		.attr("height", 160)
-		.attr("class", "legend");
+    // background
+    group.append("rect")
+        .attr("x", xPos)
+        .attr("y", yPos)
+        .attr("width", 100)
+        .attr("height", 160)
+        .attr("class", "legend");
 
-	function createLabel(yPosition, fill, image, ratingsMap) {
-		group.append("circle")
-			.attr("cx", xPos + 20)
-			.attr("cy", yPosition)
-			.attr("r", 10)
-			.attr("fill", fill)
-			.style("opacity", 0.5)
+    function createLabel(yPosition, fill, image, ratingsMap) {
+        group.append("circle")
+            .attr("cx", xPos + 20)
+            .attr("cy", yPosition)
+            .attr("r", 10)
+            .attr("fill", fill)
+            .style("opacity", 0.5)
             .on("click", (event, d) => {
                 event.stopPropagation();
-				createCountries(countryGroup, path, countryData, ratingsMap, colorInterp);
+                createCountries(countryGroup, path, countryData, ratingsMap, colorInterp);
             });
 
-		group.append("svg:image")
-			.attr("x", xPos + 40)
-			.attr("y", yPosition - 25)
-			.attr("width", 50)
-			.attr("height", 50)
-			.attr("xlink:href", image);
-	}
+        group.append("svg:image")
+            .attr("x", xPos + 40)
+            .attr("y", yPosition - 25)
+            .attr("width", 50)
+            .attr("height", 50)
+            .attr("xlink:href", image);
+    }
 
-	createLabel(-10, "steelblue", "chocolate-bar.png", chocoRatingsMap);
-	createLabel(70, "chocolate", "cocoa.png", beansRatingsMap);
+    createLabel(-10, "steelblue", "chocolate-bar.png", chocoRatingsMap);
+    createLabel(70, "chocolate", "cocoa.png", beansRatingsMap);
 }
 
 class GlobeDrawer {
@@ -157,21 +155,21 @@ class GlobeDrawer {
 
         this.path = d3.geoPath().projection(this.projection);
 
-		this.elem.append("circle")
+        this.elem.append("circle")
             .attr("cx", center[0])
             .attr("cy", center[1])
             .attr("r", this.projection.scale())
             .attr("class", "globe-background");
 
 
-		this.countryGroup = this.elem.append("g");
+        this.countryGroup = this.elem.append("g");
         //createGraticule(this.elem, this.path);
-		const chocoRatingsMap = createRatingMap(chocoData);
-		const beansRatingsMap = createRatingMap(beanData);
+        const chocoRatingsMap = createRatingMap(chocoData);
+        const beansRatingsMap = createRatingMap(beanData);
 
-		const colorInterp = d3.scaleLinear()
-			.domain(d3.extent(chocoRatingsMap.values()))
-			.range(["#ffc296", "#9c5144"]);
+        const colorInterp = d3.scaleLinear()
+            .domain(d3.extent(chocoRatingsMap.values()))
+            .range(["#ffc296", "#9c5144"]);
 
         createCountries(this.countryGroup, this.path, countryData, chocoRatingsMap, colorInterp);
 
@@ -187,7 +185,7 @@ class GlobeDrawer {
             .y(function(d) { return d[1] })
             .curve(d3.curveBasis);
 
-		this.selectedIsBeans = false;
+        this.selectedIsBeans = false;
 
         this.elem.on("click", _ => {
             this.selectedLocation = null;
@@ -195,7 +193,7 @@ class GlobeDrawer {
             this.draw();
         });
 
-		createLegend(this.elem, this.countryGroup, this.path, countryData, chocoRatingsMap, beansRatingsMap, colorInterp);
+        createLegend(this.elem, this.countryGroup, this.path, countryData, chocoRatingsMap, beansRatingsMap, colorInterp);
     }
 
     draw() {
@@ -233,7 +231,7 @@ class GlobeDrawer {
                 d3.select(event.currentTarget).attr("fill", "orange");
             })
             .on("mouseout", (event, d) => {
-                d3.select(event.currentTarget).attr("fill",fill);
+                d3.select(event.currentTarget).attr("fill", fill);
             })
             .style("opacity", 0.5);
 
@@ -260,16 +258,16 @@ class GlobeDrawer {
     drawArcs(selectedLocation = null, selectedIsBeans = false) {
         var dataset = this.linkData;
         if (selectedLocation != null) {
-			if (selectedIsBeans) {
-				dataset = dataset.filter(d => d.bean_location_name == selectedLocation.location_name);
-			} else {
-				dataset = dataset.filter(d => d.company_location_name == selectedLocation.location_name);
-			}
+            if (selectedIsBeans) {
+                dataset = dataset.filter(d => d.bean_location_name == selectedLocation.location_name);
+            } else {
+                dataset = dataset.filter(d => d.company_location_name == selectedLocation.location_name);
+            }
         }
 
-		var arcWidthScale =  d3.scaleLinear()
-			.domain(d3.extent(dataset, d => d.link_count))
-			.range([0.2, 5]);
+        var arcWidthScale = d3.scaleLinear()
+            .domain(d3.extent(dataset, d => d.link_count))
+            .range([0.2, 5]);
 
         this.arcsGroup.selectAll("path")
             .data(dataset)
@@ -315,7 +313,7 @@ class GlobeDrawer {
 }
 
 
-const svg = d3.select('#globe').attr("viewBox", `0 -70 ${width} ${height+150}`);
+const svg = d3.select('#globe').attr("viewBox", `0 -50 ${width} ${height+150}`);
 const cards = d3.select('#cards');
 
 Promise.all([

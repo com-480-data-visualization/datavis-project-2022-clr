@@ -6,22 +6,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="favicon.png">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js "></script>
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
     <style>
         .google-visualization-tooltip {
             max-width: 250px;
@@ -33,6 +34,7 @@
         }
     </style>
 
+
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -41,182 +43,216 @@
         AOS.init();
     </script>
 
-    <section class="sliderh row justify-content-center">
-        <div class="slidesh col-9">
-            <div>
-                <a href="#intro-text" id="chocolate-bar">
-                    <img src="bar.svg" alt="chocolate bar">
-                </a>
-            </div>
-            <div id="intro-text" class="mt-1 mb-5 row justify-content-center">
-                <h1 class="col-8 willie">THE CHOCOLATE FACTORY</h1>
-                <p class="col-8 narrative" style="text-align: center; ">
-                    How can we tell when the chocolate we are buying is good? While for experts this task seems easy, most people are often clueless when it comes to assessing the quality of chocolate. In this website, you will find all the information you need to find your
-                    ideal, local and quality chocolate. For now, here are a few tips to tell when chocolate is good:
-                </p>
-                <ul class="col-8 narrative" style="text-align: center; ">
-                    <li>
-                        Search for craft chocolate! Make sure the company conducts every step of the chocolate making process on their own (the bean to bar process)
-                    </li>
-                    <li>
-                        Value the origin of the chocolate. Regions that grow cocoa beans locally allow companies to control the quality of their harvests
-                    </li>
-                    <li>
-                        The fewer ingredients the better. Cocoa only really needs three ingredients: cocoa butter, sugar and beans
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
+    <div class="row justify-content-center">
+        <div class="col-11">
+            <section class="sliderh row justify-content-left">
+                <div class="col-5" data-aos="fade-right" style="height:40%; margin-top: -7%;">
+                    <a href="#intro-text" id="chocolate-bar">
+                        <img src="bar.svg " alt="chocolate bar ">
+                    </a>
+                </div>
+                <div class="mt-5 mb-5 col-7 " style="height:70vh">
+                    <!-- <h1 class="willie mb-5">THE CHOCOLATE FACTORY</h1> -->
 
-    <section class="sliderh row justify-content-center ">
+                    <p class="narrative " style="text-align: center; ">
+                        <i>How can we tell when the chocolate we are buying is good?</i> <br><br> While for experts this task seems easy, most people are often clueless when it comes to assessing the quality of chocolate. In this website, you will find
+                        all the information you need to find your ideal, local and quality chocolate. For now, here are a few tips to tell when chocolate is good:
+                    </p>
+                    <ul class="narrative " style="text-align: left; ">
+                        <li>
+                            Search for craft chocolate! Make sure the company is responsible for every step of the chocolate making process (the bean to bar process)
+                        </li>
+                        <li>
+                            Value the origin of the chocolate. Regions that grow cocoa beans locally allow companies to control the quality of their harvests
+                        </li>
+                        <li>
+                            The fewer ingredients the better. Chocolate only really needs three ingredients: cocoa butter, sugar and beans
+                        </li>
+                    </ul>
 
-        <div class="slidesh col-9 pb-5 pt-5 " data-aos="fade-in ">
+                </div>
+                <i class="fa fa-chevron-down" style="font-size:50px;color:#753d22"></i>
 
-            <div>
+
+            </section>
+
+            <section class="sliderh row justify-content-center ">
                 <a href="#world-text">
                     <h1 class="willie ">A world of chocolate</h1>
                 </a>
-                <div class="row">
-                    <div class="col-3">
-                        <h2>Cocoa bars</h2>
-                        <div id="cards" class="narrative">
-                            <p>
-                                How local is the quality of chocolate?
-                                <br> Explore the territoriality of chocolate! What country produced the most chocolate? And most cocoa beans? Look at the size of the circle for the number of chocolate bars in each country. What country imports most from
-                                where? Click on the country to show it's import/export connections. Is there a country whose chocolate production or bean growth yields a particularly good chocolate? The darker the country the better the ratings of its
-                                chocolate bars. You can switch this view to color the countries of bean origin. Click on a country to see what chocolate bars they produce!
-                            </p>
+                <div class="col-3 ">
+                    <!-- <h2>Cocoa bars</h2> -->
+                    <div id="cards" class=" narrative ">
+                        <p>
+                            <i>How local is the quality of chocolate?</i>
+                            <br><br> Explore the territoriality of chocolate! What country produced the most chocolate? And most cocoa beans? Look at the size of the circle for the number of chocolate bars in each country. What country imports most from
+                            where? Click on the country to show it's import/export connections. Is there a country whose chocolate production or bean growth yields a particularly good chocolate? The darker the country the better the ratings of its chocolate
+                            bars.
+                        </p>
 
-                        </div>
-                    </div>
-                    <div class="col-9">
-                        <svg id="globe">
-                        </svg>
                     </div>
                 </div>
+                <script>
+                    $(function() {
+                        $('[data-toggle="tooltip"]').tooltip()
+                    })
+                </script>
 
-            </div>
 
-            <div id="world-text " class="mt-1 mb-5 row justify-content-center">
-                <h1 class="col-8 willie ">A world of chocolate</h1>
-                <p class="col-8 narrative" style="text-align: left; ">
-                    <br>The chocolate quality is highly influenced by its terroir. Different regions grow different bean types and even harvesting the same type in different regions can yield very different flavours. The high humidity and heavy rains
-                    that wash rich and fertile silt down the mountainsides create unique soil conditions in the Chuao plantation, one of the best in the world. Soil and weather both being factors effecting flavor. There is a wide range of soil types within
-                    a single country alone and certainly across the globe in countries that cacao can grow there is even a greater variety. For example, cacao grown in Java is often fire dried because the amount of rain often doesn't allow for proper
-                    sun drying, which gives it a rather smokey taste. Some regions also feature different local bacteria that collaborate to the taste of the chocolate during drying. Even the drying conditions might change. Consider that some regions
-                    of Central and South America can't afford drying platforms and dry their cocoa on the asphalt of the street.
-                </p>
-            </div>
+                <div class="col-9 " data-aos="fade-in " style="text-align:left; height:70vh">
+                    <button type="button" class="btn" data-toggle="tooltip" title="You can switch this view to color the countries of bean origin. Click on a country to see what chocolate bars they produce!" data-content="">
+                        <i class="material-icons-outlined" style='font-size:30px; color:#753d22; background-color: white'>
+                            info
+                        </i>
+                    </button>
+                    <svg id="globe">
+                            </svg>
+                </div>
+                <i class="fa fa-chevron-down" style="font-size:50px;color:#753d22"></i>
 
-        </div>
-    </section>
+            </section>
+            <section class="sliderh row justify-content-center ">
 
-    <section class="sliderh row justify-content-center ">
-
-        <div class="slidesh col-9 pb-5 pt-5 " data-aos="fade-in ">
-
-            <div>
-                <a href="#finder-text ">
-                    <h1 class="willie ">Your favourite chocolate finder</h1>
+                <a href="#world-text">
+                    <h1 class="willie ">A world of chocolate</h1>
                 </a>
-                <div class="row ">
-                    <div class="col-3 ">
-                        <h2>Cocoa bars</h2>
-                        <div id="results" class="narrative">
-                            <p>
-                                What flavours, cocoa percentages and ingredients are you favourite?<br> You can finally discover your ideal chocolate bar! Drag the chocolate percentage to your preferred amount (roughly). Select all the ingredients that
-                                your bar must have. And select all flavours you really like in chocolate. Browse the results, you will find your perfect chocolate.
-
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-9 ">
-                        <form class="d-block w-100 " id="main-form ">
+                <div class="mt-5 mb-5 col-8" style="height:70vh">
+                    <p class="narrative " style="text-align: left; ">
+                        <br>The chocolate quality is highly influenced by its terroir. Different regions grow different bean types and even harvesting the same type in different regions can yield very different flavours. The high humidity and heavy rains
+                        that wash rich and fertile silt down the mountainsides create unique soil conditions in the Chuao plantation, one of the best in the world. Soil and weather both being factors effecting flavor. There is a wide range of soil types
+                        within a single country alone and certainly across the globe in countries that cacao can grow there is even a greater variety. For example, cacao grown in Java is often fire dried because the amount of rain often doesn't allow
+                        for proper sun drying, which gives it a rather smokey taste. Some regions also feature different local bacteria that collaborate to the taste of the chocolate during drying. Even the drying conditions might change. Consider that
+                        some regions of Central and South America can't afford drying platforms and dry their cocoa on the asphalt of the street.
+                    </p>
+                </div>
+                <i class="fa fa-chevron-down" style="font-size:50px;color:#753d22"></i>
 
 
-                            <div>
-                                <p>Choose the percentage of coco in your bar <span id="coco_per_val "></span> </p>
-                                <input type="range " class="form-range " id="choco-cocoa " min="1 " max="100 " value="70 " onchange="update_coco_percent_display() ">
-                            </div>
+        </div>
 
-                            <p>Choose your favorite ingredients </p>
-                            <div class="mb-3 form-check " id="ingredients ">
-                            </div>
+        </section>
 
-                            <p>Choose your favorite flavors </p>
-                            <div class="mb-3 form-check" id="flavors">
-                                <select class="selectpicker" data-live-search="true" data-width="fit" multiple data-max-options="5" id="choco-flavors">
-                                </select>
-                            </div>
+        <section class="sliderh row justify-content-center ">
 
-                            <p>Would you like to use Word Embeddings while matching?</p>
-                            <div class="form-check ">
-                                <input class="form-check-input " type="radio " name="useEmbedding " id="useEmbedding1 " value="1 ">
-                                <label class="form-check-label " for="useEmbedding1 ">
-                                                                Yes
-                                                            </label>
-                            </div>
-                            <div class="form-check ">
-                                <input class="form-check-input " type="radio " name="useEmbedding " id="useEmbedding2 " value="0 " checked>
-                                <label class="form-check-label " for="useEmbedding2 ">
-                                                                No
-                                                            </label>
-                            </div>
 
-                            <button type="submit " class="btn btn-primary ">Submit</button>
-                        </form>
-                    </div>
+            <a href="#finder-text">
+                <h1 class="willie ">Your favourite chocolate finder</h1>
+            </a>
+            <div class="col-7" style="height:70vh">
+                <!-- <h2>Cocoa bars</h2> -->
+                <div id="results" class="narrative mt-5 row justify-content-center">
+                    <p class="col-8">
+                        What flavours, cocoa percentages and ingredients are you favourite?<br> You can finally discover your ideal chocolate bar! Drag the chocolate percentage to your preferred amount (roughly). Select all the ingredients that your bar
+                        must have. And select all flavours you really like in chocolate. Browse the results, you will find your perfect chocolate.
+
+                    </p>
                 </div>
             </div>
-            <div id="finder-text " class="mt-1 mb-5 row justify-content-center">
-                <h1 class="col-8 willie ">Your favourite chocolate finder</h1>
-                <p class="col-8 narrative" style="text-align: center">
-                    How does cocoa percentage, ingredients and flavours affect the quality of chocolate?
-                    <br> When it comes to the ingredients, the cocoa bean harvesting and drying place are crucial, but also the presence of many artificial ingredients such as alkali, milk fat, soy lecithin, PGPR (polyglycerol polyricinoleate) and artificial
-                    flavoring, as these usual concur to a lower quality of the bar. The cocoa percentage, on the other side, is only an indication of the percentage of sugar used. It is not, as one would expect, any indicator for how healthy the bar is:
-                    the cocoa percentage includes in cocoa also the cocoa butter! Finally, the flavours and tastes are good indicators of the quality and particularities of the chocolate. For instance, a moldy taste indicates that the farmer waited too
-                    long before drying the beans. Sour or harsh flavours are caused by gas fired dryer, while sweeteness is achieved with proper roasting. An oily flavour is obtained when drying the beans on an open fire.
+            <div class="col-5" style="height:70vh">
+                <form class="d-block w-100 " id="main-form">
+
+                    <div>
+                        <p>Choose the percentage of coco in your bar <span id="coco_per_val"></span> </p>
+                        <input type="range" class="form-range " id="choco-cocoa" min="1" max="100" value="70" onchange="update_coco_percent_display()">
+                    </div>
+
+                    <p>Choose your favorite ingredients </p>
+                    <div class="mb-3 form-check " id="ingredients">
+                    </div>
+
+                    <p>Choose your favorite flavors </p>
+                    <div class="mb-3 form-check " id="flavors">
+                        <select class="selectpicker " data-live-search="true" data-width="fit" multiple data-max-options="5" id="choco-flavors">
+                                    </select>
+                    </div>
+
+                    <p>Would you like to use Word Embeddings while matching?</p>
+                    <div class="form-check ">
+                        <input class="form-check-input " type="radio" name="useEmbedding" id="useEmbedding1" value="1">
+                        <label class="form-check-label" for="useEmbedding1">
+                                                                    Yes
+                                                                </label>
+                    </div>
+                    <div class="form-check ">
+                        <input class="form-check-input" type="radio" name="useEmbedding" id="useEmbedding2" value="0" checked>
+                        <label class="form-check-label" for="useEmbedding2">
+                                                                    No
+                                                                </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary ">Submit</button>
+                </form>
+            </div>
+            <i class="fa fa-chevron-down" style="font-size:50px;color:#753d22"></i>
+
+        </section>
+
+        <section class="sliderh row justify-content-center ">
+            <a href="#finder-text">
+                <h1 class="willie ">Your favourite chocolate finder</h1>
+            </a>
+            <div class="col-8 mt-5 narrative" style="height:70vh">
+                <p style="text-align: center ">
+                    <i>How does cocoa percentage, ingredients and flavours affect the quality of chocolate?</i>
+                    <br><br> When it comes to the ingredients, the cocoa bean harvesting and drying place are crucial, but also the presence of many artificial ingredients such as alkali, milk fat, soy lecithin, PGPR (polyglycerol polyricinoleate) and
+                    artificial flavoring, as these usual concur to a lower quality of the bar. The cocoa percentage, on the other side, is only an indication of the percentage of sugar used. It is not, as one would expect, any indicator for how healthy
+                    the bar is: the cocoa percentage includes in cocoa also the cocoa butter! Finally, the flavours and tastes are good indicators of the quality and particularities of the chocolate. For instance, a moldy taste indicates that the farmer
+                    waited too long before drying the beans. Sour or harsh flavours are caused by gas fired dryer, while sweeteness is achieved with proper roasting. An oily flavour is obtained when drying the beans on an open fire.
                 </p>
             </div>
-        </div>
-    </section>
+            <i class="fa fa-chevron-down" style="font-size:50px;color:#753d22"></i>
 
-    <section class="sliderh row justify-content-center ">
 
-        <div class="col-9 pb-5 pt-5 " data-aos="fade-in ">
+        </section>
 
-            <div>
-                <a href="#plots-text ">
+        <section class="sliderh row justify-content-center ">
+
+            <div style="height:70vh">
+                <a href="#plots-text">
                     <h1 class="willie ">Chocolate plots</h1>
                 </a>
-                <div class="row mb-5">
-                    <div class="col-6">
-                        <canvas id="radial" width=800 height=400 style="height:85vh; width:100%"></canvas>
+                <div class="row mb-5 mt-5">
+                    <div class="col-3 ">
+                        <canvas id="radial_flavours" width=800 height=400></canvas>
 
                     </div>
-                    <div class="col-6">
-                        <div id="sankey" width=800 height=400 style="height:85vh; width:100%"></div>
+                    <div class="col-3 ">
+                        <canvas id="radial_ingredients" width=800 height=400></canvas>
+
+                    </div>
+
+                    <div class="col-3 ">
+                        <canvas id="bar_plot" width=800 height=400></canvas>
+
+                    </div>
+                    <div class="col-3 ">
+                        <canvas id="cocoa_percentage" width=800 height=400></canvas>
 
                     </div>
 
                 </div>
             </div>
-        </div>
-    </section>
+
+        </section>
+
+
+    </div>
+
+    </div>
 
     <script src="https://d3js.org/d3.v7.min.js "></script>
     <script src="https://d3js.org/topojson.v1.min.js "></script>
 
     <script src="choco-globe.js "></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js "></script>
     <script src="./preprocessing/jsons/ingredients_flavours.js "></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.5.1/math.js " integrity="sha512-h5yD4K/82dtV6LyAXy35WymQqWiPdpvdj1C1EQv62DC/IrWfp6xMHRUEL7vv0Ls1VdZ858z8s/XdJg5oRsdbAw==" crossorigin=" anonymous " referrerpolicy="no-referrer "></script>
     <script src="./preprocessing/jsons/chocolate_data.js "></script>
     <script src="./preprocessing/jsons/embeddings.js "></script>
 
     <script src="choco-maker.js "></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js "></script>
+    <script type="text/javascript " src="https://www.gstatic.com/charts/loader.js "></script>
+
     <script src="choco-plots.js "></script>
 
 </body>
