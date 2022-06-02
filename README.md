@@ -111,16 +111,11 @@ You can preview our project [on GitHub pages.](https://com-480-data-visualizatio
 **80% of the final grade**
 
 <details><summary><b>Technical Setup</b></summary>
-For project:
 
-#### Project setup
-``` ```
-
-
+No explicit setup step is required for this project. Simply clone the repository and take a look at the various files.
 
 </details>
 
-- [Website]()
+- [Website](https://com-480-data-visualization.github.io/datavis-project-2022-clr/)
 - [Process book]()
 - [Screencast]()
-
