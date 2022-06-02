@@ -2,7 +2,10 @@ const COCO_PERCENT_FACTOR = 0.2
 const INGREDIENTS_FACTOR = 0.4
 const FLAVORS_FACTOR = 0.4
 var map = L.map('map').setView([36.59788913307022, 23.906250000000004], 1);
-
+var markers = [];
+var ingr_plot = null;
+var flav_plot = null;
+var cocoa_plot = null;
 function cosinesim(A, B) {
     var dotproduct = 0;
     var mA = 0;
@@ -95,6 +98,22 @@ $("#main-form").on('submit', function(e) {
     var distances = calculate_chocolate_scores(cocoa, selected_ingredients, flavors, true);
     var results_div = $("#results");
     results_div.empty()
+    if(ingr_plot != null){
+        ingr_plot.destroy();
+    }
+    if(flav_plot != null){
+        flav_plot.destroy();
+    }
+    if(cocoa_plot != null){
+        cocoa_plot.destroy();
+    }
+    $("#flavors_radial_results").empty()
+    $("#ingredients_radial_results").empty()
+    $("#cocoa_graph_results").empty()
+    for(let i = 0; i < markers.length; i++){
+        map.removeLayer(markers[i])
+    }
+    markers = [];
     // results_div.append(`<p >The chocolate bars that are very similar to yours are: </p>`)
     var bar_ratings = []
     var cocoa_percentage_arr = []
@@ -124,7 +143,8 @@ $("#main-form").on('submit', function(e) {
 
         var current_loc = chocolate_data[distances[i].idx]['Company Location'] 
         var company_name =  chocolate_data[distances[i].idx]['Company (Manufacturer)'];
-        L.marker([company_locations[current_loc].latitude, company_locations[current_loc].longitude]).bindPopup(company_name).addTo(map);
+        var marker = L.marker([company_locations[current_loc].latitude, company_locations[current_loc].longitude]).bindPopup(company_name).addTo(map);
+        markers.push(marker);
     }
 
     var sorted = bar_ratings.sort(function(a,b){
@@ -147,13 +167,17 @@ $("#main-form").on('submit', function(e) {
     })
 
 
-    make_radial_plot(named_flavors, "Most Memorable Characteristics", 'flavors_radial_results');
-    make_radial_plot(named_ingredients, "Ingredients List", 'ingredients_radial_results');
+    
+    
+    
+
+    flav_plot = make_radial_plot(named_flavors, "Most Memorable Characteristics", 'flavors_radial_results');
+    ingr_plot = make_radial_plot(named_ingredients, "Ingredients List", 'ingredients_radial_results');
 
     cocoa_percentage_arr.sort()
 
     console.log(cocoa_percentage_arr)
-    make_percentage_plot(cocoa_percentage_arr, "Cocoa Percent Int", 'cocoa_graph_results', 'line');
+    cocoa_plot = make_percentage_plot(cocoa_percentage_arr, "Cocoa Percent Int", 'cocoa_graph_results', 'line');
 
     map.invalidateSize()
     

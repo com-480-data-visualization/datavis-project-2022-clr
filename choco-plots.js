@@ -66,7 +66,8 @@ function make_radial_plot(selected_labels, column, id) {
         document.getElementById(id),
         config
     );
-
+    
+    return radar_plot;
 }
 
 
@@ -139,6 +140,7 @@ function make_percentage_plot(selected_labels, column, id, type_plot) {
         config
     );
 
+    return single_plot;
 }
 
 async function init() {
