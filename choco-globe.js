@@ -123,6 +123,12 @@ function createLegend(elem, countryGroup, path, countryData, chocoRatingsMap, be
             .attr("cy", yPosition)
             .attr("r", 10)
             .attr("fill", fill)
+            .on("mouseover", (event, d) => {
+                d3.select(event.currentTarget).attr("fill", "orange");
+            })
+            .on("mouseout", (event, d) => {
+                d3.select(event.currentTarget).attr("fill", fill);
+            })
             .style("opacity", 0.5)
             .on("click", (event, d) => {
                 event.stopPropagation();
