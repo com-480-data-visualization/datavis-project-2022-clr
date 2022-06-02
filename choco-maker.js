@@ -6,6 +6,7 @@ var markers = [];
 var ingr_plot = null;
 var flav_plot = null;
 var cocoa_plot = null;
+
 function cosinesim(A, B) {
     var dotproduct = 0;
     var mA = 0;
@@ -34,36 +35,38 @@ function calculate_mean(vectors) {
     return mean
 }
 
-function get_average_rating_for_ingredient(ingredient){
-    var average_sum = 0, average_cnt = 0;
+function get_average_rating_for_ingredient(ingredient) {
+    var average_sum = 0,
+        average_cnt = 0;
     for (const key in chocolate_data) {
         var bar = chocolate_data[key];
-        if(bar['Ingredients List'].indexOf(ingredients[ingredient]) != -1){
+        if (bar['Ingredients List'].indexOf(ingredients[ingredient]) != -1) {
             average_sum += bar['Rating'];
             average_cnt++;
         }
     }
 
-    return average_sum/average_cnt;
+    return average_sum / average_cnt;
 }
 
 
-function get_average_rating_for_flavor(flavor){
-    var average_sum = 0, average_cnt = 0;
+function get_average_rating_for_flavor(flavor) {
+    var average_sum = 0,
+        average_cnt = 0;
     for (const key in chocolate_data) {
         var bar = chocolate_data[key];
-        if(bar['New Flavours'].indexOf(flavours[flavor]) != -1){
+        if (bar['New Flavours'].indexOf(flavours[flavor]) != -1) {
             average_sum += bar['Rating'];
             average_cnt++;
         }
     }
 
-    return average_sum/average_cnt;
+    return average_sum / average_cnt;
 }
 
 $("#main-form").on('submit', function(e) {
     console.log(e)
-    //stop form submission
+        //stop form submission
     e.preventDefault();
 
     //ajax call here
@@ -94,29 +97,31 @@ $("#main-form").on('submit', function(e) {
     // var use_embed = $("[name='useEmbedding']")[0].checked ? $("[name='useEmbedding']")[0].value : $("[name='useEmbedding']")[1].value
     // console.log(use_embed)
 
-    
+
     var distances = calculate_chocolate_scores(cocoa, selected_ingredients, flavors, true);
     var results_div = $("#results");
     results_div.empty()
-    if(ingr_plot != null){
+    if (ingr_plot != null) {
         ingr_plot.destroy();
     }
-    if(flav_plot != null){
+    if (flav_plot != null) {
         flav_plot.destroy();
     }
-    if(cocoa_plot != null){
+    if (cocoa_plot != null) {
         cocoa_plot.destroy();
     }
     $("#flavors_radial_results").empty()
     $("#ingredients_radial_results").empty()
+    $("#cocoa_nation_results").empty()
     $("#cocoa_graph_results").empty()
-    for(let i = 0; i < markers.length; i++){
+    for (let i = 0; i < markers.length; i++) {
         map.removeLayer(markers[i])
     }
     markers = [];
     // results_div.append(`<p >The chocolate bars that are very similar to yours are: </p>`)
     var bar_ratings = []
     var cocoa_percentage_arr = []
+    var company_places = [];
     for (let i = 0; i < 30; i++) {
         // console.log(chocolate_data[distances[i].idx])
         //  console.log(distances[i])
@@ -124,7 +129,7 @@ $("#main-form").on('submit', function(e) {
         
             <div class="card" style="margin:3em">
                 <div class="card-body">
-                    <h5 class="card-title">${chocolate_data[distances[i].idx]['Specific Bean Origin or Bar Name']}</h5>
+                    <h5 class="card-title"><b>Bar Name: </b>${chocolate_data[distances[i].idx]['Specific Bean Origin or Bar Name']}</h5>
                     <p class="card-text"><b>Ingredients: </b> ${chocolate_data[distances[i].idx]['Ingredients List']}</p>
                     <p class="card-text"><b>Characteristics: </b> ${chocolate_data[distances[i].idx]['Most Memorable Characteristics']}</p>
                     <p class="card-text"><b>Coco Percentage: </b> ${chocolate_data[distances[i].idx]['Cocoa Percent']}</p>
@@ -136,18 +141,21 @@ $("#main-form").on('submit', function(e) {
             rating: chocolate_data[distances[i].idx]['Rating'],
             html: company_html
         });
-        
-        if(!cocoa_percentage_arr.includes(parseFloat(chocolate_data[distances[i].idx]['Cocoa Percent']))){
+
+        if (!cocoa_percentage_arr.includes(parseFloat(chocolate_data[distances[i].idx]['Cocoa Percent']))) {
             cocoa_percentage_arr.push(parseFloat(chocolate_data[distances[i].idx]['Cocoa Percent']))
         }
 
-        var current_loc = chocolate_data[distances[i].idx]['Company Location'] 
-        var company_name =  chocolate_data[distances[i].idx]['Company (Manufacturer)'];
+        var current_loc = chocolate_data[distances[i].idx]['Company Location']
+        if (!company_places.includes(current_loc)) {
+            company_places.push(current_loc);
+        }
+        var company_name = chocolate_data[distances[i].idx]['Company (Manufacturer)'];
         var marker = L.marker([company_locations[current_loc].latitude, company_locations[current_loc].longitude]).bindPopup(company_name).addTo(map);
         markers.push(marker);
     }
 
-    var sorted = bar_ratings.sort(function(a,b){
+    var sorted = bar_ratings.sort(function(a, b) {
         return b.rating - a.rating
     });
 
@@ -167,9 +175,9 @@ $("#main-form").on('submit', function(e) {
     })
 
 
-    
-    
-    
+
+
+
 
     flav_plot = make_radial_plot(named_flavors, "Most Memorable Characteristics", 'flavors_radial_results');
     ingr_plot = make_radial_plot(named_ingredients, "Ingredients List", 'ingredients_radial_results');
@@ -178,13 +186,14 @@ $("#main-form").on('submit', function(e) {
 
     console.log(cocoa_percentage_arr)
     cocoa_plot = make_percentage_plot(cocoa_percentage_arr, "Cocoa Percent Int", 'cocoa_graph_results', 'line');
+    place_plot = make_percentage_plot(company_places, "Company Location", 'cocoa_nation_results', 'bar');
 
     map.invalidateSize()
-    
+
     $("#picker_info").css("display", "none")
     $("#picker_results").css("display", "")
 
-    
+
 });
 
 function calculate_chocolate_scores(coco_percent, new_ingredients_indices, new_flavors_idx, use_vectors) {
@@ -256,21 +265,21 @@ function update_coco_percent_display() {
 
 async function init() {
     populate_form();
-    
+
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '© OpenStreetMap'
     }).addTo(map);
 
-    
+
     // console.log(chocolate_data[0])
     // console.log(embeddings)
 }
 
 var tabEl = document.getElementById('analysis-tab')
 tabEl.addEventListener('shown.bs.tab', event => {
-   console.log("analysis")
-   setTimeout(function(){ map.invalidateSize()}, 500);
+    console.log("analysis")
+    setTimeout(function() { map.invalidateSize() }, 500);
 })
 
 init();

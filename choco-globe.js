@@ -319,7 +319,7 @@ class GlobeDrawer {
 }
 
 
-const svg = d3.select('#globe').attr("viewBox", `0 -50 ${width} ${height+150}`);
+const svg = d3.select('#globe').attr("viewBox", `0 -50 ${width *3/2.5} ${height *3/2.5}`);
 const cards = d3.select('#cards');
 
 Promise.all([

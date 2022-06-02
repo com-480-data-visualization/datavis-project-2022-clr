@@ -88,7 +88,7 @@
                     </ul>
 
                 </div>
-                <i class="fa fa-chevron-down" style="font-size:50px;color:#753d22"></i>
+                <i class="fa fa-chevron-down" style="font-size:50px;color:#753d22;"></i>
 
 
             </section>
@@ -116,14 +116,17 @@
                 </script>
 
 
-                <div class="col-9 " data-aos="fade-in " style="text-align:left; height:70vh">
-                    <button type="button" class="btn" data-toggle="tooltip" title="You can switch this view to color the countries of bean origin. Click on a country to see what chocolate bars they produce!" data-content="">
-                        <i class="material-icons-outlined" style='font-size:30px; color:#753d22; background-color: white'>
+                <div class="col-9" data-aos="fade-in " style="text-align:end; height:70vh; align-content:center; ">
+                    <button type="button" class="btn" data-toggle="tooltip" title="You can switch the color of the countries between the average rating of the bars whose companies are in the country to that whose bean origin is that country. Click on the blue circle in the legend for the company view and on the orange one for bean origin one!"
+                        data-content="">
+                        <i class="material-icons-outlined" style='font-size:30px; color:#753d22; background-color: white; '>
                             info
                         </i>
                     </button>
                     <svg id="globe">
                             </svg>
+
+
                 </div>
                 <i class="fa fa-chevron-down" style="font-size:50px;color:#753d22"></i>
 
@@ -135,11 +138,11 @@
                 </a>
                 <div class="mt-5 mb-5 col-8" style="height:70vh">
                     <p class="narrative " style="text-align: left; ">
-                        <br>The chocolate quality is highly influenced by its terroir. Different regions grow different bean types and even harvesting the same type in different regions can yield very different flavours. The high humidity and heavy rains
-                        that wash rich and fertile silt down the mountainsides create unique soil conditions in the Chuao plantation, one of the best in the world. Soil and weather both being factors effecting flavor. There is a wide range of soil types
-                        within a single country alone and certainly across the globe in countries that cacao can grow there is even a greater variety. For example, cacao grown in Java is often fire dried because the amount of rain often doesn't allow
-                        for proper sun drying, which gives it a rather smokey taste. Some regions also feature different local bacteria that collaborate to the taste of the chocolate during drying. Even the drying conditions might change. Consider that
-                        some regions of Central and South America can't afford drying platforms and dry their cocoa on the asphalt of the street.
+                        <br>The chocolate quality is highly influenced by its territory. Different regions grow different bean types and even harvesting the same type in different regions can yield very different flavours. The high humidity and heavy
+                        rains that wash rich and fertile silt down the mountainsides create unique soil conditions in the Chuao plantation, one of the best in the world. Soil and weather both being factors effecting flavour. There is a wide range of soil
+                        types within a single country alone and certainly across the globe there is even a greater variety. For example, cacao grown in Java is often fire dried because the amount of rain often doesn't allow for proper sun drying, which
+                        gives it a rather smokey taste. Some regions also feature different local bacteria that affects the taste of the chocolate during drying. Even the drying conditions might change. Consider that some regions of Central and South
+                        America can't afford drying platforms and dry their cocoa on the asphalt of the street.
                     </p>
                 </div>
                 <i class="fa fa-chevron-down" style="font-size:50px;color:#753d22"></i>
@@ -159,19 +162,21 @@
                 <!-- <h2>Cocoa bars</h2> -->
                 <div class="narrative mt-5 row justify-content-center">
 
-                    <p class="col-8" id="picker_info">
-                        What flavours, cocoa percentages and ingredients are you favourite?<br> You can finally discover your ideal chocolate bar! Drag the chocolate percentage to your preferred amount (roughly). Select all the ingredients that your bar
-                        must have. And select all flavours you really like in chocolate. Browse the results, you will find your perfect chocolate.
+                    <p class="col-12" id="picker_info">
+                        What flavours, cocoa percentages and ingredients are your favourite?<br><br> You can finally discover your ideal chocolate bar! Drag the chocolate percentage to your preferred amount (roughly). Select all the ingredients that your
+                        bar must have. And select all flavours you really like in chocolate. <br><br> Browse the results, you will find the names of our suggested chocolate bars including information about their ingredients, characteristics, cocoa percentage
+                        and the user rating.
+                        <br><br>You can also click the tab analysis to see how your chosen characteristics were generally rated by users.
                     </p>
 
 
-                    <div class="col-8" style="display: none;" id="picker_results">
+                    <div class="col-12" style="display: none;" id="picker_results">
                         <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="results-tab" data-bs-toggle="tab" data-bs-target="#results-tab-pane" type="button" role="tab" aria-controls="results-tab-pane" aria-selected="true">Results</button>
+                                <button class="nav-link active narrative" id="results-tab" data-bs-toggle="tab" data-bs-target="#results-tab-pane" type="button" role="tab" aria-controls="results-tab-pane" aria-selected="true">Results</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="analysis-tab" data-bs-toggle="tab" data-bs-target="#analysis-tab-pane" type="button" role="tab" aria-controls="analysis-tab-pane" aria-selected="false">Analysis</button>
+                                <button class="nav-link narrative" id="analysis-tab" data-bs-toggle="tab" data-bs-target="#analysis-tab-pane" type="button" role="tab" aria-controls="analysis-tab-pane" aria-selected="false">Analysis</button>
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
@@ -182,14 +187,38 @@
                             </div>
                             <div class="tab-pane fade" id="analysis-tab-pane" role="tabpanel" aria-labelledby="analysis-tab" tabindex="0">
                                 <div id="analysis" style="max-height: 400px; overflow-y:scroll;">
-                                    <h3 style="padding-top: 2em;">Chocolate ratings based on ingredients</h3>
-                                    <div style="margin: 3em;"><canvas id="ingredients_radial_results" width=800 height=400></canvas></div>
-                                    <h3 style="padding-top: 2em;">Chocolate ratings based on flavours</h3>
-                                    <div style="margin: 3em;"><canvas id="flavors_radial_results" width=800 height=400></canvas></div>
-                                    <h3 style="padding-top: 2em;">Chocolate ratings based on cocoa %</h3>
-                                    <div style="margin: 3em;"><canvas id="cocoa_graph_results" width=800 height=400></canvas></div>
-                                    <h3 style="padding-top: 2em;">Map of chocolate companies found</h3>
-                                    <div id="map" style="margin: 3em;"></div>
+                                    <h3 class="narrative " style="padding-top: 0.5em;">Chocolate ratings based on flavours <button type="button" class="btn" data-toggle="tooltip" title="A radar plot to discover how bars with each of your selected flavours were rated by users" data-content="">
+                                        <i class="material-icons-outlined" style='font-size:30px; color:#753d22; background-color: white; '>
+                                            info
+                                        </i>
+                                    </button>
+                                    </h3>
+                                    <div style="margin: 6em;"><canvas id="flavors_radial_results" width=800 height=400></canvas></div>
+                                    <h3 class="narrative " style="padding-top: 0.5em;">Chocolate ratings based on cocoa % <button type="button" class="btn" data-toggle="tooltip" title="A line plot to discover how bars with each of your selected cocoa-percentage were rated by users" data-content="">
+                                    <i class="material-icons-outlined" style='font-size:30px; color:#753d22; background-color: white; '>
+                                        info
+                                    </i>
+                                </button></h3>
+                                    <div style="margin: 6em;"><canvas id="cocoa_graph_results" width=800 height=400></canvas></div>
+                                    <h3 class="narrative " style="padding-top: 0.5em;">Chocolate ratings based on country of the company <button type="button" class="btn" data-toggle="tooltip" title="A bar plot to discover how bars with company origin country appearing in the results are rated by users"
+                                            data-content="">
+                                    <i class="material-icons-outlined" style='font-size:30px; color:#753d22; background-color: white; '>
+                                        info
+                                    </i>
+                                </button></h3>
+                                    <div style="margin: 6em;"><canvas id="cocoa_nation_results" width=800 height=400></canvas></div>
+                                    <h3 class="narrative " style="padding-top: 0.5em;">Chocolate ratings based on ingredients <button type="button" class="btn" data-toggle="tooltip" title="A radar plot to discover how bars with each of your selected ingredients were rated by users" data-content="">
+                                    <i class="material-icons-outlined" style='font-size:30px; color:#753d22; background-color: white; '>
+                                        info
+                                    </i>
+                                </button></h3>
+                                    <div style="margin: 6em;"><canvas id="ingredients_radial_results" width=800 height=400></canvas></div>
+                                    <h3 class="narrative " style="padding-top: 0.5em;">Map of chocolate companies found <button type="button" class="btn" data-toggle="tooltip" title="A map to discover where the bars in your results were produced" data-content="">
+                                    <i class="material-icons-outlined" style='font-size:30px; color:#753d22; background-color: white; '>
+                                        info
+                                    </i>
+                                </button></h3>
+                                    <div id="map" style="margin: 6em;"></div>
                                 </div>
 
                             </div>
@@ -199,19 +228,19 @@
 
                 </div>
             </div>
-            <div class="col-5" style="height:70vh; margin-bottom: 2em;">
+            <div class="col-5 mt-5 mb-5" style="height:70vh; ">
                 <form class="d-block w-100 " id="main-form">
 
                     <div>
-                        <p>Choose the percentage of coco in your bar <span id="coco_per_val"></span> </p>
+                        <p class="narrative ">Choose the percentage of coco in your bar <span id="coco_per_val"></span> </p>
                         <input type="range" class="form-range " id="choco-cocoa" min="1" max="100" value="70" onchange="update_coco_percent_display()">
                     </div>
 
-                    <p>Choose your favorite ingredients </p>
+                    <p class="narrative ">Choose your favorite ingredients </p>
                     <div class="mb-3 form-check " id="ingredients">
                     </div>
 
-                    <p>Choose your favorite flavors </p>
+                    <p class="narrative ">Choose your favorite flavors </p>
                     <div class="mb-3 form-check " id="flavors">
                         <select class="selectpicker " data-live-search="true" data-width="fit" multiple data-max-options="5" id="choco-flavors">
                                     </select>
@@ -232,43 +261,14 @@
                 <p style="text-align: center ">
                     <i>How does cocoa percentage, ingredients and flavours affect the quality of chocolate?</i>
                     <br><br> When it comes to the ingredients, the cocoa bean harvesting and drying place are crucial, but also the presence of many artificial ingredients such as alkali, milk fat, soy lecithin, PGPR (polyglycerol polyricinoleate) and
-                    artificial flavoring, as these usual concur to a lower quality of the bar. The cocoa percentage, on the other side, is only an indication of the percentage of sugar used. It is not, as one would expect, any indicator for how healthy
-                    the bar is: the cocoa percentage includes in cocoa also the cocoa butter! Finally, the flavours and tastes are good indicators of the quality and particularities of the chocolate. For instance, a moldy taste indicates that the farmer
-                    waited too long before drying the beans. Sour or harsh flavours are caused by gas fired dryer, while sweeteness is achieved with proper roasting. An oily flavour is obtained when drying the beans on an open fire.
+                    artificial flavoring, as these usual concur to a lower quality of the bar. <br><br> The cocoa percentage is only an indicator of the percentage of sugar in the bar. It is not, as one would expect, any indicator for how healthy the
+                    bar is as the cocoa percentage includes also the cocoa butter (not so healthy)! <br><br> Finally, the flavours and taste are good indicators of the quality and particularities of the chocolate. For instance, a moldy taste indicates
+                    that the farmer waited too long before drying the beans. Sour or harsh flavours are caused by gas fired dryer, while sweeteness is achieved with proper roasting. An oily flavour is obtained when drying the beans on an open fire. <br><br>
+
+                    <i>Thank you for having visited our website!</i>
                 </p>
             </div>
-            <i class="fa fa-chevron-down" style="font-size:50px;color:#753d22"></i>
 
-
-        </section>
-
-        <section class="sliderh row justify-content-center ">
-
-            <div style="height:70vh">
-                <a href="#plots-text">
-                    <h1 class="willie ">Chocolate plots</h1>
-                </a>
-                <div class="row mb-5 mt-5">
-                    <div class="col-3 ">
-                        <canvas id="radial_flavours" width=800 height=400></canvas>
-
-                    </div>
-                    <div class="col-3 ">
-                        <canvas id="radial_ingredients" width=800 height=400></canvas>
-
-                    </div>
-
-                    <div class="col-3 ">
-                        <canvas id="bar_plot" width=800 height=400></canvas>
-
-                    </div>
-                    <div class="col-3 ">
-                        <canvas id="cocoa_percentage" width=800 height=400></canvas>
-
-                    </div>
-
-                </div>
-            </div>
 
         </section>
 
