@@ -117,5 +117,5 @@ No explicit setup step is required for this project. Simply clone the repository
 </details>
 
 - [Website](https://com-480-data-visualization.github.io/datavis-project-2022-clr/)
-- [Process book]()
+- [Process book (PDF)](process-book.pdf)
 - [Screencast]()
