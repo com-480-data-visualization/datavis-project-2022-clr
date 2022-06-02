@@ -30,14 +30,10 @@
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
-        integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
-        crossorigin=""/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
 
-     <!-- Make sure you put this AFTER Leaflet's CSS -->
-    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
-        integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
-        crossorigin=""></script>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
 
 
     <style>
@@ -49,11 +45,14 @@
             border-color: white;
             overflow-y: scroll;
         }
-        #map { height: 400px; }
+        
+        #map {
+            height: 400px;
+        }
     </style>
 
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?1">
 </head>
 
 <body>
@@ -103,9 +102,9 @@
                     <div id="cards" class=" narrative ">
                         <p>
                             <i>How local is the quality of chocolate?</i>
-                            <br><br> Explore the territoriality of chocolate! What country produced the most chocolate? And most cocoa beans? Look at the size of the circle for the number of chocolate bars in each country. What country imports most from
-                            where? Click on the country to show it's import/export connections. Is there a country whose chocolate production or bean growth yields a particularly good chocolate? The darker the country the better the ratings of its chocolate
-                            bars.
+                            <br><br> Explore the territoriality of chocolate! <br><br>What country produced the most chocolate? And most cocoa beans? Look at the size of the circle for the number of chocolate bars in each country. <br><br> What country
+                            imports most from where? Click on the country to show it's import/export connections. <br><br> Is there a country whose chocolate production or bean growth yields a particularly good chocolate? The darker the country the better
+                            the ratings of its chocolate bars or beans.
                         </p>
 
                     </div>
@@ -159,24 +158,24 @@
             <div class="col-7" style="height:70vh; margin-bottom: 2em;">
                 <!-- <h2>Cocoa bars</h2> -->
                 <div class="narrative mt-5 row justify-content-center">
-                    
+
                     <p class="col-8" id="picker_info">
                         What flavours, cocoa percentages and ingredients are you favourite?<br> You can finally discover your ideal chocolate bar! Drag the chocolate percentage to your preferred amount (roughly). Select all the ingredients that your bar
                         must have. And select all flavours you really like in chocolate. Browse the results, you will find your perfect chocolate.
                     </p>
-                    
+
 
                     <div class="col-8" style="display: none;" id="picker_results">
                         <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
-                              <button class="nav-link active" id="results-tab" data-bs-toggle="tab" data-bs-target="#results-tab-pane" type="button" role="tab" aria-controls="results-tab-pane" aria-selected="true">Results</button>
+                                <button class="nav-link active" id="results-tab" data-bs-toggle="tab" data-bs-target="#results-tab-pane" type="button" role="tab" aria-controls="results-tab-pane" aria-selected="true">Results</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                              <button class="nav-link" id="analysis-tab" data-bs-toggle="tab" data-bs-target="#analysis-tab-pane" type="button" role="tab" aria-controls="analysis-tab-pane" aria-selected="false">Analysis</button>
+                                <button class="nav-link" id="analysis-tab" data-bs-toggle="tab" data-bs-target="#analysis-tab-pane" type="button" role="tab" aria-controls="analysis-tab-pane" aria-selected="false">Analysis</button>
                             </li>
-                          </ul>
-                          <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="results-tab-pane" role="tabpanel" aria-labelledby="results-tab" tabindex="0" >
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="results-tab-pane" role="tabpanel" aria-labelledby="results-tab" tabindex="0">
                                 <div id="results">
 
                                 </div>
@@ -192,11 +191,11 @@
                                     <h3 style="padding-top: 2em;">Map of chocolate companies found</h3>
                                     <div id="map" style="margin: 3em;"></div>
                                 </div>
-                                
+
                             </div>
-                          </div>
+                        </div>
                     </div>
-                    
+
 
                 </div>
             </div>
@@ -219,7 +218,7 @@
                     </div>
                     <button type="submit" class="btn btn-primary ">Submit</button>
                 </form>
-                
+
             </div>
             <i class="fa fa-chevron-down" style="font-size:50px;color:#753d22"></i>
 
@@ -281,14 +280,14 @@
     <script src="https://d3js.org/d3.v7.min.js "></script>
     <script src="https://d3js.org/topojson.v1.min.js "></script>
 
-    <script src="choco-globe.js "></script>
+    <script src="choco-globe.js?1"></script>
     <script src="./preprocessing/jsons/ingredients_flavours.js "></script>
     <script src="./preprocessing/jsons/link_dataset.js "></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.5.1/math.js " integrity="sha512-h5yD4K/82dtV6LyAXy35WymQqWiPdpvdj1C1EQv62DC/IrWfp6xMHRUEL7vv0Ls1VdZ858z8s/XdJg5oRsdbAw==" crossorigin=" anonymous " referrerpolicy="no-referrer "></script>
     <script src="./preprocessing/jsons/chocolate_data.js "></script>
     <script src="./preprocessing/jsons/embeddings.js "></script>
 
-    <script src="choco-maker.js "></script>
+    <script src="choco-maker.js?1"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js "></script>
     <script type="text/javascript " src="https://www.gstatic.com/charts/loader.js "></script>
 
